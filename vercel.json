@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/index.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.7.4"
     }
   },
@@ -14,8 +14,12 @@
       "dest": "/favicon.svg"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/api/index.php"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/$1.php"
     }
   ]
 }
