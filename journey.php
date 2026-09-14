@@ -1,0 +1,303 @@
+<?php
+/**
+ * RAFFZ Portfolio - Journey Page
+ * Clean Dark Aesthetic Stack (PHP & Tailwind CSS)
+ */
+?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAFFZ | Journey & Career Milestones</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: '#dc2626',
+                        void: '#070709',
+                        surface: '#121218'
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css?v=13.0">
+</head>
+<body class="dark-mode bg-[#070709] text-white">
+    <!-- Ambient Background Texture & Glow -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-gradient-to-b from-red-600/15 via-red-950/8 to-transparent blur-[130px] rounded-full"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_15%,#000_70%,transparent_100%)]"></div>
+        <div class="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#ffffff_1.2px,transparent_1.2px)] [background-size:20px_20px]"></div>
+    </div>
+
+    <!-- Dynamic Floating Capsule Navbar Dock -->
+    <header class="capsule-header">
+        <nav class="capsule-nav">
+            <!-- Left: Logo Badge -->
+            <a href="index.php" class="capsule-logo" aria-label="Home">RAFFZ</a>
+
+            <!-- Center: Links Dock -->
+            <div class="capsule-links" id="capsuleLinks">
+                <div class="nav-indicator"></div>
+                <a href="index.php" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="journey.php" class="capsule-link active"><i class="fa-solid fa-route"></i> Journey</a>
+                <a href="project.php" class="capsule-link"><i class="fa-solid fa-rocket"></i> Projects</a>
+                <a href="certificate.php" class="capsule-link"><i class="fa-solid fa-award"></i> Certificates</a>
+                <a href="gallery.php" class="capsule-link"><i class="fa-solid fa-images"></i> Gallery</a>
+                <a href="contact.php" class="capsule-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </div>
+
+            <!-- Right: Actions & Mobile Hamburger -->
+            <div class="capsule-actions">
+                <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32 pb-20 relative z-10">
+        <!-- Journey Section -->
+        <section id="journey" class="journey-section container">
+            <header class="text-center mb-12 scroll-reveal">
+                <span class="hero-greeting font-mono text-xs mb-2">
+                    [ CAREER MILESTONES ]
+                </span>
+                <h1 class="text-3xl md:text-5xl font-black mb-4 font-heading text-white">
+                    My Journey
+                </h1>
+                <p class="text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
+                    Kilas balik proses belajar, pengalaman, dan langkah-langkah kecil yang membentuk pola pikir saya sampai hari ini.
+                </p>
+            </header>
+            
+            <div class="timeline-container">
+                <!-- Vertical Line -->
+                <div class="timeline-line">
+                    <div class="timeline-progress-fill" id="timelineProgress"></div>
+                </div>
+
+                <!-- Item 1: High School -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - 2024</span>
+                        <h3>Fondasi Karakter & Akademik</h3>
+                        <h4><span class="text-zinc-300 font-semibold">SMAN 1 Purwokerto</span></h4>
+                        <ul class="space-y-2 text-zinc-400 text-sm">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>Pencapaian Akademik:</strong> Meraih peringkat terbaik sekolah, bukti kedisiplinan dan ketekunan belajar.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>Rohis SMAN 1 Purwokerto (Sekretaris):</strong> Mengelola tata kelola administrasi organisasi dan koordinasi tim.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>PMR Wira (Divisi Medikom):</strong> Menjadi jembatan visual komunikasi publik lewat desain grafis & multimedia.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 2: Univ Semester 1 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Semester 1 (2024)</span>
+                        <h3>University Transition</h3>
+                        <h4><span class="text-zinc-300 font-semibold">Universitas Brawijaya</span></h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Menjalani masa transisi dari sekolah ke bangku kuliah di Universitas Brawijaya (FILKOM) dengan fokus mendalami dasar-dasar ilmu komputer, algoritma dasar, dan menumbuhkan ketertarikan tinggi terhadap rekayasa sistem digital.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Univ Semester 2 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Semester 2 (2025)</span>
+                        <h3>Deepening IT Skills</h3>
+                        <h4><span class="text-zinc-300 font-semibold">Faculty of Computer Science</span></h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Mulai mendalami bidang IT secara teknis, pemrograman dasar, algoritma pemrograman, dll. Serta memperluas relasi dengan berkontribusi aktif sebagai Staff Kaderisasi dan Pembinaan di LDK-UAKI UB Kabinet Pelita Harapan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 4: Univ Semester 3 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Semester 3 (2025)</span>
+                        <h3>Committee & Early Projects</h3>
+                        <h4><span class="text-zinc-300 font-semibold">Kepanitiaan & Tech Builds</span></h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Terjun aktif dalam berbagai kepanitiaan besar kampus :
+                        </p>
+                        <ul class="space-y-2 text-zinc-400 text-sm">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>RAJA Brawijaya 2025:</strong> Staff Supervisor, pendamping mahasiswa baru di Cluster 42</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>PKKMB & Startup Academy FILKOM UB:</strong> Staff Fasilitator, menjadi pendamping mahasiswa baru di Cluster 25</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>Synergy of Symphony (SOS) Dept. Sistem Informasi FILKOM UB:</strong> Menjadi bagian dari penyusunan konsep acara SOS DSI.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>UAKI School 1-2:</strong> Menjadi Penanggung Jawab Divisi PDD</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span><strong>dan kepanitiaan lainnya</strong></span>
+                            </li>
+                        </ul>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Pada fase ini, saya juga mulai mendapatkan kepercayaan mengerjakan proyek-proyek web interaktif pertama secara profesional.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 5: Univ Semester 4 -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Semester 4 (2026)</span>
+                        <h3>Active Development</h3>
+                        <h4><span class="text-zinc-300 font-semibold">Fullstack & UI/UX Specialist</span></h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Fokus mengembangkan keahlian sebagai praktisi IT, khususnya dalam arsitektur Web Design modern serta Web & App Development. Mengembangkan berbagai platform berbasis AI adaptif dan inovasi antarmuka berdaya guna tinggi.
+                        </p>
+                        <ul class="space-y-2 text-zinc-400 text-sm">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span>Mulai mendapatkan kepercayaan untuk mengerjakan proyek-proyek web interaktif</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-check text-red-500 mt-1 text-xs"></i>
+                                <span>Aktif mengembangkan proyek web development</span>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 6: Univ Semester 5 -->
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Semester 1 (2024)</span>
+                        <h3>University Transition</h3>
+                        <h4><span class="text-zinc-300 font-semibold">Universitas Brawijaya</span></h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Menjalani masa transisi dari sekolah ke bangku kuliah di Universitas Brawijaya (FILKOM) dengan fokus mendalami dasar-dasar ilmu komputer, algoritma dasar, dan menumbuhkan ketertarikan tinggi terhadap rekayasa sistem digital.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 7: Ongoing -->
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">FUTURE HORIZON</span>
+                        <h3>Continuous Innovation</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">
+                            Terus bereksplorasi menciptakan terobosan produk komputasi berikutnya yang solutif, estetis, dan berdampak luas bagi ekosistem digital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modern Asymmetric Developer Footer -->
+    <footer class="modern-footer">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10">
+                
+                <!-- Column 1: Brand & Status -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <a href="index.php" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
+                            RAFFZ
+                        </a>
+                    </div>
+                    <p class="text-zinc-400 text-sm max-w-sm leading-relaxed">
+                        Software engineer & digital artisan focusing on frontend architecture, user experience design, and interactive interfaces.
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Navigation -->
+                <div class="md:col-span-3 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Navigation</span>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.php" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="journey.php" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
+                        <li><a href="project.php" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="certificate.php" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
+                        <li><a href="gallery.php" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="contact.php" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Connect & Social -->
+                <div class="md:col-span-4 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Connect</span>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="mailto:rafizhevirgialwafa@gmail.com" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-solid fa-envelope text-zinc-500"></i> rafizhevirgialwafa@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/rafi-zhevirgi" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-linkedin text-zinc-500"></i> linkedin.com/in/rafi-zhevirgi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/raffz1" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-github text-zinc-500"></i> github.com/raffz1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/raffz.zhevv" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-instagram text-zinc-500"></i> @raffz.zhevv
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-zinc-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+                <p>&copy; 2026 Rafi Zhevirgi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=13.0"></script>
+</body>
+</html>
