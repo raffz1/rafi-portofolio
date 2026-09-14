@@ -1,140 +1,9 @@
-<?php
-/**
- * RAFFZ Portfolio - Project Detail Page
- * Clean Dark Aesthetic Stack (PHP & Tailwind CSS)
- */
-
-// Data for projects with Roles and Tech Stack (Preserved backend array)
-$projects = [
-    'tanibantu' => [
-        'title' => 'TaniBantu',
-        'tags' => ['Web Development'],
-        'year' => '2025',
-        'roles' => ['Fullstack Developer'],
-        'technologies' => ['Laravel', 'MySQL', 'PHP', 'Git', 'GitHub'],
-        'desc' => 'TaniBantu merupakan proyek sistem pertanian yang membantu petani memperkirakan waktu panen, harga jual-beli hasil panen dan informasi terkait pertanian lainnya. Proyek ini bertujuan untuk menghubungkan para petani dengan teknologi modern, memudahkan mereka dalam distribusi hasil panen dan manajemen pasokan yang lebih efisien di pasar digital.',
-        'images' => [
-            'img/landing page_tanibantu 1.png',
-            'img/landing page_tanibantu 2.png',
-            'img/landing page_tanibantu 3.png'
-        ],
-        'demo_url' => 'https://github.com/raffz1/tanibantu'
-    ],
-    'rentcircle' => [
-        'title' => 'RentCircle',
-        'tags' => ['Web Development'],
-        'year' => '2025',
-        'roles' => ['Fullstack Developer', 'UI/UX Designer'],
-        'technologies' => ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'HTML5', 'Figma'],
-        'desc' => 'RentCircle adalah aplikasi peer-to-peer rental platform. Platform ini dirancang menggunakan arsitektur modern berbasis Laravel untuk mendesain antarmuka dengan gaya glassmorphism UI/UX. Menyediakan pengalaman meminjam barang antar-tetangga yang mulus, aman, dan dapat dipercaya di lingkungan sekitar terdekat.',
-        'images' => [
-            'img/rent-circle_1.png',
-            'img/rent-circle_2.png',
-            'img/rent-circle_3.png'
-        ],
-        'demo_url' => 'https://github.com/raffz1/rentcircle'
-    ],
-    'sinta' => [
-        'title' => 'SINTA: Sari Animasi Jantung',
-        'tags' => ['Web Development', 'HealthTech', 'Interactive Web'],
-        'year' => '2026',
-        'roles' => [
-            'Fullstack Developer (Rancangan Arsitektur UI/UX, Pengembangan Kode Frontend & Logic, Integrasi State Management, Optimization & Deployment)'
-        ],
-        'technologies' => ['HTML5', 'Tailwind CSS', 'Alpine.js', 'Git', 'GitHub', 'Vercel'],
-        'desc' => 'SINTA dikembangkan sebagai solusi inovasi teknologi kesehatan digital yang menggabungkan fitur skrining mandiri dengan visualisasi animasi jantung interaktif untuk mengukur faktor risiko penyakit kardiovaskular dan penyakit menular. Aplikasi ini telah sukses diuji coba dan diimplementasikan secara langsung pada program pameran edukasi kesehatan pengabdian masyarakat (KKN-Doktor Mengabdi Universitas Brawijaya) di Desa Talang, Kecamatan Sendang, Kabupaten Tulungagung. Dalam penerapannya, SINTA digunakan oleh puluhan pemuda Karang Taruna dan warga lokal sebagai media skrining interaktif berbasis QR Code, terbukti meningkatkan pemahaman masyarakat terhadap gaya hidup sehat serta deteksi dini penyakit kardiovaskular secara efektif dan menyenangkan.',
-        'images' => [
-            'img/sinta_1.png',
-            'img/sinta_2.png',
-            'img/sinta_3.png'
-        ],
-        'demo_url' => 'https://sinta-app-two.vercel.app/'
-    ],
-    'pathdeck' => [
-        'title' => 'Path-Deck',
-        'tags' => ['Web Development', 'EduTech'],
-        'year' => '2026',
-        'roles' => ['Project Manager', 'Full Stack Developer'],
-        'technologies' => ['Laravel', 'MySQL', 'PHP', 'Git', 'GitHub', 'Trello'],
-        'desc' => 'Path-Deck adalah platform simulasi web interaktif yang memanfaatkan mekanisme gamifikasi kartu digital (deck-based simulation) untuk membantu generasi muda memahami perencanaan karier dan mitigasi risiko finansial. Dibangun untuk mengatasi minimnya media edukasi praktis seputar keputusan keuangan di masa transisi perkuliahan dan dunia kerja, platform ini menghadirkan skenario pilihan bercabang (branching scenarios). Pengguna ditantang mengelola modal, alokasi dana darurat, serta investasi pengembangan diri melalui kartu strategi, dengan algoritma kalkulasi dinamis yang langsung merefleksikan konsekuensi finansial jangka panjang dari setiap keputusan yang diambil.',
-        'images' => [
-            'img/pathdeck_1.png',
-            'img/pathdeck_2.png',
-            'img/pathdeck_3.png',
-            'img/pathdeck_4.png',
-            'img/pathdeck_5.png',
-            'img/pathdeck_6.png',
-            'img/pathdeck_7.png'
-        ],
-        'demo_url' => 'https://github.com/raffz1/pathdeck'
-    ],
-    'nodfinc' => [
-        'title' => 'Nodfinc.',
-        'tags' => ['Web Development', 'Gesture & Gamification'],
-        'year' => '2026',
-        'roles' => ['Full Stack Developer'],
-        'technologies' => ['JavaScript', 'HTML5', 'CSS3', 'MediaPipe Face Mesh', 'Gesture Recognition'],
-        'desc' => 'Nodfinc. adalah platform simulasi literasi finansial interaktif yang memanfaatkan kecerdasan buatan berbasis computer vision untuk mendeteksi gestur kepala (mengangguk dan menggeleng) sebagai kontrol pengambilan keputusan. Melalui simulasi gamifikasi ini, pengguna diajak mengasah kebiasaan finansial yang bijak secara intuitif, menyenangkan, dan bebas sentuhan.',
-        'images' => [
-            'img/nodfinc_1.png',
-            'img/nodfinc_2.png',
-            'img/nodfinc_3.png',
-            'img/nodfinc_4.png',
-            'img/nodfinc_5.png',
-            'img/nodfinc_6.png',
-            'img/nodfinc_7.png',
-        ],
-        'demo_url' => 'https://nodfinc.vercel.app/'
-    ],
-    'socratiq' => [
-        'title' => 'Socratiq AI',
-        'tags' => ['Web Development', 'GenAI & LLM'],
-        'year' => '2025',
-        'roles' => ['Full Stack Developer', 'AI Engineer'],
-        'technologies' => ['JavaScript', 'Tailwind CSS', 'CSS3'],
-        'desc' => 'Socratiq AI merupakan platform pendamping belajar adaptif yang mengintegrasikan kecerdasan buatan dengan metode sokrates untuk mencegah cognitive offloading atau ketergantungan jawaban instan. Alih-alih langsung menyajikan hasil akhir, sistem membimbing siswa memahami konsep inti secara mandiri melalui pertanyaan reflektif, kuis interaktif bertahap, dan pemrosesan bahan ajar digital.',
-        'images' => [
-            'img/socratiq_1.png',
-            'img/socratiq_2.png',
-            'img/socratiq_3.png',
-            'img/socratiq_4.png',
-        ],
-        'demo_url' => 'https://socratiq-ai-learn.vercel.app'
-    ],
-    'kritikaedu' => [
-        'title' => 'Kritika.Edu',
-        'tags' => ['Web Development', 'EduTech', 'Civic Tech'],
-        'year' => '2026',
-        'roles' => ['Full Stack Developer'],
-        'technologies' => ['HTML5', 'Tailwind CSS', 'Alpine.js', 'JavaScript', 'GitHub'],
-        'desc' => 'Kritika.Edu adalah platform literasi politik dan civic education interaktif yang dirancang untuk meningkatkan pemahaman masyarakat terhadap proses kebijakan publik. Dengan antarmuka berbasis gamifikasi, platform ini memandu pengguna melalui alur kerja legislasi, analisis data parlemen, dan simulasi debat politik secara edukatif dan terstruktur.',
-        'images' => [
-            'img/kritika edu_1.png',
-            'img/kritika edu_2.png',
-            'img/kritika edu_3.png',
-            'img/kritika edu_4.png',
-            'img/kritika edu_5.png',
-            'img/kritika edu_6.png',
-            'img/kritika edu_7.png',
-            'img/kritika edu_8.png',
-            'img/kritika edu_9.png',
-        ],
-        'demo_url' => 'https://kritika-edu.vercel.app/'
-    ]
-];
-
-$id = isset($_GET['id']) ? $_GET['id'] : 'tanibantu';
-if (!array_key_exists($id, $projects)) {
-    $id = 'tanibantu';
-}
-$project = $projects[$id];
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAFFZ | <?php echo htmlspecialchars($project['title']); ?></title>
+    <title id="pageTitle">RAFFZ | Detail Proyek</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -319,25 +188,18 @@ $project = $projects[$id];
         }
 
         .detail-info-card:hover {
-            border-color: rgba(239, 68, 68, 0.35);
-        }
-
-        .desc-info-card {
-            max-width: 860px;
-            margin: 0 auto 3rem auto;
-            border-left: 3px solid #dc2626;
+            border-color: rgba(239, 68, 68, 0.3);
         }
 
         .detail-card-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #fff;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 0.75rem;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .role-badge-list, .tech-badge-list {
@@ -371,12 +233,30 @@ $project = $projects[$id];
             border-radius: 6px;
             font-size: 0.82rem;
             font-weight: 500;
-            font-family: 'JetBrains Mono', monospace;
         }
 
-        @media (max-width: 768px) {
-            .project-detail-page {
-                padding-top: 6rem;
+        .desc-info-card {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 640px) {
+            .detail-header-card {
+                padding: 1.5rem;
+            }
+
+            .detail-header-card .flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .detail-header-card .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .detail-header-card .detail-title {
+                font-size: 1.75rem;
             }
 
             .detail-header-card, .detail-info-card, .desc-info-card {
@@ -401,17 +281,17 @@ $project = $projects[$id];
     <header class="capsule-header">
         <nav class="capsule-nav">
             <!-- Left: Logo Badge -->
-            <a href="index.php" class="capsule-logo" aria-label="Home">RAFFZ</a>
+            <a href="index.html" class="capsule-logo" aria-label="Home">RAFFZ</a>
 
             <!-- Center: Links Dock -->
             <div class="capsule-links" id="capsuleLinks">
                 <div class="nav-indicator"></div>
-                <a href="index.php" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="journey.php" class="capsule-link"><i class="fa-solid fa-route"></i> Journey</a>
-                <a href="project.php" class="capsule-link active"><i class="fa-solid fa-rocket"></i> Projects</a>
-                <a href="certificate.php" class="capsule-link"><i class="fa-solid fa-award"></i> Certificates</a>
-                <a href="gallery.php" class="capsule-link"><i class="fa-solid fa-images"></i> Gallery</a>
-                <a href="contact.php" class="capsule-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="index.html" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="journey.html" class="capsule-link"><i class="fa-solid fa-route"></i> Journey</a>
+                <a href="projects.html" class="capsule-link active"><i class="fa-solid fa-rocket"></i> Projects</a>
+                <a href="certificate.html" class="capsule-link"><i class="fa-solid fa-award"></i> Certificates</a>
+                <a href="gallery.html" class="capsule-link"><i class="fa-solid fa-images"></i> Gallery</a>
+                <a href="contact.html" class="capsule-link"><i class="fa-solid fa-envelope"></i> Contact</a>
             </div>
 
             <!-- Right: Actions & Mobile Hamburger -->
@@ -428,7 +308,7 @@ $project = $projects[$id];
     <main class="project-detail-page container pb-20 relative z-10">
         <div style="max-width: 860px; margin: 0 auto;">
             <!-- Navigation Back Link -->
-            <a href="project.php" class="back-link">
+            <a href="projects.html" class="back-link">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Kembali ke Katalog Proyek</span>
             </a>
@@ -438,52 +318,37 @@ $project = $projects[$id];
         <div class="detail-header-card scroll-reveal">
             <div class="flex flex-col md:flex-row md:items-start justify-between gap-5">
                 <div>
-                    <h1 class="detail-title mb-4">
-                        <?php echo htmlspecialchars($project['title']); ?>
+                    <h1 class="detail-title mb-4" id="projectTitle">
+                        Loading...
                     </h1>
                     <div class="flex flex-wrap items-center gap-3">
                         <span class="inline-flex items-center gap-2 font-mono text-xs font-semibold bg-zinc-800 border border-zinc-700 text-zinc-300 px-3 py-1.5 rounded-md">
                             <i class="fa-regular fa-calendar text-red-500"></i> 
-                            <?php echo htmlspecialchars($project['year']); ?>
+                            <span id="projectYear">2026</span>
                         </span>
-                        <div class="project-tags">
-                            <?php foreach($project['tags'] as $tag): ?>
-                                <span class="project-tag"><?php echo htmlspecialchars($tag); ?></span>
-                            <?php endforeach; ?>
+                        <div class="project-tags" id="projectTags">
                         </div>
                     </div>
                 </div>
                 
-                <?php if(!empty($project['demo_url'])): ?>
-                <div class="pt-2 md:pt-0">
-                    <a href="<?php echo htmlspecialchars($project['demo_url']); ?>" target="_blank" class="btn-primary text-sm whitespace-nowrap">
+                <div class="pt-2 md:pt-0" id="demoContainer">
+                    <a href="#" id="demoLink" target="_blank" class="btn-primary text-sm whitespace-nowrap">
                         <span>Live Demo / Source</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                     </a>
                 </div>
-                <?php endif; ?>
             </div>
         </div>
 
         <!-- 2. Interactive Photo Carousel -->
         <div class="project-carousel-wrapper scroll-reveal delay-100">
             <div class="project-carousel" id="projectCarousel">
-                <?php foreach($project['images'] as $index => $img): ?>
-                    <div class="carousel-slide">
-                        <img src="<?php echo htmlspecialchars($img); ?>" alt="<?php echo htmlspecialchars($project['title']); ?> Screenshot <?php echo $index+1; ?>" class="carousel-img">
-                    </div>
-                <?php endforeach; ?>
             </div>
             
-            <?php if(count($project['images']) > 1): ?>
             <button class="carousel-btn prev-btn" onclick="prevSlide()" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="carousel-btn next-btn" onclick="nextSlide()" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
             <div class="carousel-dots" id="carouselDots">
-                <?php foreach($project['images'] as $index => $img): ?>
-                    <span class="dot <?php echo $index === 0 ? 'active' : ''; ?>" onclick="goToSlide(<?php echo $index; ?>)"></span>
-                <?php endforeach; ?>
             </div>
-            <?php endif; ?>
         </div>
 
         <!-- 3. Roles & Technologies Grid -->
@@ -494,16 +359,7 @@ $project = $projects[$id];
                     <i class="fa-solid fa-user-gear text-red-500"></i>
                     <span>Peran & Kontribusi</span>
                 </h3>
-                <div class="role-badge-list">
-                    <?php if(!empty($project['roles'])): ?>
-                        <?php foreach($project['roles'] as $role): ?>
-                            <span class="role-badge">
-                                <i class="fa-solid fa-check text-xs"></i> <?php echo htmlspecialchars($role); ?>
-                            </span>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <span class="text-zinc-500 text-sm">Tidak ada informasi peran.</span>
-                    <?php endif; ?>
+                <div class="role-badge-list" id="roleBadges">
                 </div>
             </div>
 
@@ -513,16 +369,7 @@ $project = $projects[$id];
                     <i class="fa-solid fa-layer-group text-red-500"></i>
                     <span>Teknologi & Tools</span>
                 </h3>
-                <div class="tech-badge-list">
-                    <?php if(!empty($project['technologies'])): ?>
-                        <?php foreach($project['technologies'] as $tech): ?>
-                            <span class="tech-badge">
-                                <i class="fa-solid fa-code text-red-400 text-xs"></i> <?php echo htmlspecialchars($tech); ?>
-                            </span>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <span class="text-zinc-500 text-sm">Tidak ada informasi teknologi.</span>
-                    <?php endif; ?>
+                <div class="tech-badge-list" id="techBadges">
                 </div>
             </div>
         </div>
@@ -533,8 +380,7 @@ $project = $projects[$id];
                 <i class="fa-solid fa-circle-info text-red-500"></i>
                 <span>Deskripsi & Analisis Solusi</span>
             </h2>
-            <p class="text-zinc-300 leading-relaxed text-base">
-                <?php echo htmlspecialchars($project['desc']); ?>
+            <p class="text-zinc-300 leading-relaxed text-base" id="projectDesc">
             </p>
         </div>
     </main>
@@ -547,7 +393,7 @@ $project = $projects[$id];
                 <!-- Column 1: Brand & Status -->
                 <div class="md:col-span-5 space-y-4">
                     <div class="flex items-center gap-3">
-                        <a href="index.php" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
+                        <a href="index.html" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
                             RAFFZ
                         </a>
                     </div>
@@ -560,12 +406,12 @@ $project = $projects[$id];
                 <div class="md:col-span-3 space-y-3">
                     <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Navigation</span>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="index.php" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="journey.php" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
-                        <li><a href="project.php" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
-                        <li><a href="certificate.php" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
-                        <li><a href="gallery.php" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
-                        <li><a href="contact.php" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="index.html" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="journey.html" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
+                        <li><a href="projects.html" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="certificate.html" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
+                        <li><a href="gallery.html" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
@@ -607,15 +453,205 @@ $project = $projects[$id];
 
     <script src="script.js?v=13.0"></script>
     <script>
+        const projectsData = {
+            'tanibantu': {
+                title: 'TaniBantu',
+                tags: ['Web Development'],
+                year: '2025',
+                roles: ['Fullstack Developer'],
+                technologies: ['Laravel', 'MySQL', 'PHP', 'Git', 'GitHub'],
+                desc: 'TaniBantu merupakan proyek sistem pertanian yang membantu petani memperkirakan waktu panen, harga jual-beli hasil panen dan informasi terkait pertanian lainnya. Proyek ini bertujuan untuk menghubungkan para petani dengan teknologi modern, memudahkan mereka dalam distribusi hasil panen dan manajemen pasokan yang lebih efisien di pasar digital.',
+                images: [
+                    'img/landing page_tanibantu 1.png',
+                    'img/landing page_tanibantu 2.png',
+                    'img/landing page_tanibantu 3.png'
+                ],
+                demo_url: 'https://github.com/raffz1/tanibantu'
+            },
+            'rentcircle': {
+                title: 'RentCircle',
+                tags: ['Web Development'],
+                year: '2025',
+                roles: ['Fullstack Developer', 'UI/UX Designer'],
+                technologies: ['Laravel', 'PHP', 'MySQL', 'JavaScript', 'HTML5', 'Figma'],
+                desc: 'RentCircle adalah aplikasi peer-to-peer rental platform. Platform ini dirancang menggunakan arsitektur modern berbasis Laravel untuk mendesain antarmuka dengan gaya glassmorphism UI/UX. Menyediakan pengalaman meminjam barang antar-tetangga yang mulus, aman, dan dapat dipercaya di lingkungan sekitar terdekat.',
+                images: [
+                    'img/rent-circle_1.png',
+                    'img/rent-circle_2.png',
+                    'img/rent-circle_3.png'
+                ],
+                demo_url: 'https://github.com/raffz1/rentcircle'
+            },
+            'sinta': {
+                title: 'SINTA: Sari Animasi Jantung',
+                tags: ['Web Development', 'HealthTech', 'Interactive Web'],
+                year: '2026',
+                roles: [
+                    'Fullstack Developer (Rancangan Arsitektur UI/UX, Pengembangan Kode Frontend & Logic, Integrasi State Management, Optimization & Deployment)'
+                ],
+                technologies: ['HTML5', 'Tailwind CSS', 'Alpine.js', 'Git', 'GitHub', 'Vercel'],
+                desc: 'SINTA dikembangkan sebagai solusi inovasi teknologi kesehatan digital yang menggabungkan fitur skrining mandiri dengan visualisasi animasi jantung interaktif untuk mengukur faktor risiko penyakit kardiovaskular dan penyakit menular. Aplikasi ini telah sukses diuji coba dan diimplementasikan secara langsung pada program pameran edukasi kesehatan pengabdian masyarakat (KKN-Doktor Mengabdi Universitas Brawijaya) di Desa Talang, Kecamatan Sendang, Kabupaten Tulungagung. Dalam penerapannya, SINTA digunakan oleh puluhan pemuda Karang Taruna dan warga lokal sebagai media skrining interaktif berbasis QR Code, terbukti meningkatkan pemahaman masyarakat terhadap gaya hidup sehat serta deteksi dini penyakit kardiovaskular secara efektif dan menyenangkan.',
+                images: [
+                    'img/sinta_1.png',
+                    'img/sinta_2.png',
+                    'img/sinta_3.png'
+                ],
+                demo_url: 'https://sinta-app-two.vercel.app/'
+            },
+            'pathdeck': {
+                title: 'Path-Deck',
+                tags: ['Web Development', 'EduTech'],
+                year: '2026',
+                roles: ['Project Manager', 'Full Stack Developer'],
+                technologies: ['Laravel', 'MySQL', 'PHP', 'Git', 'GitHub', 'Trello'],
+                desc: 'Path-Deck adalah platform simulasi web interaktif yang memanfaatkan mekanisme gamifikasi kartu digital (deck-based simulation) untuk membantu generasi muda memahami perencanaan karier dan mitigasi risiko finansial. Dibangun untuk mengatasi minimnya media edukasi praktis seputar keputusan keuangan di masa transisi perkuliahan dan dunia kerja, platform ini menghadirkan skenario pilihan bercabang (branching scenarios). Pengguna ditantang mengelola modal, alokasi dana darurat, serta investasi pengembangan diri melalui kartu strategi, dengan algoritma kalkulasi dinamis yang langsung merefleksikan konsekuensi finansial jangka panjang dari setiap keputusan yang diambil.',
+                images: [
+                    'img/pathdeck_1.png',
+                    'img/pathdeck_2.png',
+                    'img/pathdeck_3.png',
+                    'img/pathdeck_4.png',
+                    'img/pathdeck_5.png',
+                    'img/pathdeck_6.png',
+                    'img/pathdeck_7.png'
+                ],
+                demo_url: 'https://github.com/raffz1/pathdeck'
+            },
+            'nodfinc': {
+                title: 'Nodfinc.',
+                tags: ['Web Development', 'Gesture & Gamification'],
+                year: '2026',
+                roles: ['Full Stack Developer'],
+                technologies: ['JavaScript', 'HTML5', 'CSS3', 'MediaPipe Face Mesh', 'Gesture Recognition'],
+                desc: 'Nodfinc. adalah platform simulasi literasi finansial interaktif yang memanfaatkan kecerdasan buatan berbasis computer vision untuk mendeteksi gestur kepala (mengangguk dan menggeleng) sebagai kontrol pengambilan keputusan. Melalui simulasi gamifikasi ini, pengguna diajak mengasah kebiasaan finansial yang bijak secara intuitif, menyenangkan, dan bebas sentuhan.',
+                images: [
+                    'img/nodfinc_1.png',
+                    'img/nodfinc_2.png',
+                    'img/nodfinc_3.png',
+                    'img/nodfinc_4.png',
+                    'img/nodfinc_5.png',
+                    'img/nodfinc_6.png',
+                    'img/nodfinc_7.png'
+                ],
+                demo_url: 'https://nodfinc.vercel.app/'
+            },
+            'Sinta': {
+                title: 'Sinta',
+                tags: ['Web Development', 'Gesture & Gamification'],
+                year: '2026',
+                roles: ['Full Stack Developer'],
+                technologies: ['JavaScript', 'HTML5', 'CSS3', 'MediaPipe Face Mesh', 'Gesture Recognition'],
+                desc: 'Sinta adalah platform simulasi literasi finansial interaktif yang memanfaatkan kecerdasan buatan berbasis computer vision untuk mendeteksi gestur kepala (mengangguk dan menggeleng) sebagai kontrol pengambilan keputusan. Melalui simulasi gamifikasi ini, pengguna diajak mengasah kebiasaan finansial yang bijak secara intuitif, menyenangkan, dan bebas sentuhan.',
+                images: [
+                    'img/sinta_1.png',
+                    'img/sinta_2.png',
+                    'img/sinta_3.png',
+                    'img/sinta_4.png',
+                    'img/sinta_5.png',
+                    'img/sinta_6.png',
+                    'img/sinta_7.png'
+                ],
+                demo_url: 'https://sinta.vercel.app/'
+            },
+            'socratiq': {
+                title: 'Socratiq AI',
+                tags: ['Web Development', 'GenAI & LLM'],
+                year: '2025',
+                roles: ['Full Stack Developer', 'AI Engineer'],
+                technologies: ['JavaScript', 'Tailwind CSS', 'CSS3'],
+                desc: 'Socratiq AI merupakan platform pendamping belajar adaptif yang mengintegrasikan kecerdasan buatan dengan metode sokrates untuk mencegah cognitive offloading atau ketergantungan jawaban instan. Alih-alih langsung menyajikan hasil akhir, sistem membimbing siswa memahami konsep inti secara mandiri melalui pertanyaan reflektif, kuis interaktif bertahap, dan pemrosesan bahan ajar digital.',
+                images: [
+                    'img/socratiq_1.png',
+                    'img/socratiq_2.png',
+                    'img/socratiq_3.png',
+                    'img/socratiq_4.png'
+                ],
+                demo_url: 'https://socratiq-ai-learn.vercel.app'
+            },
+            'kritikaedu': {
+                title: 'Kritika.Edu',
+                tags: ['Web Development', 'EduTech', 'Civic Tech'],
+                year: '2026',
+                roles: ['Full Stack Developer'],
+                technologies: ['HTML5', 'Tailwind CSS', 'Alpine.js', 'JavaScript', 'GitHub'],
+                desc: 'Kritika.Edu adalah platform literasi politik dan civic education interaktif yang dirancang untuk meningkatkan pemahaman masyarakat terhadap proses kebijakan publik. Dengan antarmuka berbasis gamifikasi, platform ini memandu pengguna melalui alur kerja legislasi, analisis data parlemen, dan simulasi debat politik secara edukatif dan terstruktur.',
+                images: [
+                    'img/kritika edu_1.png',
+                    'img/kritika edu_2.png',
+                    'img/kritika edu_3.png',
+                    'img/kritika edu_4.png',
+                    'img/kritika edu_5.png',
+                    'img/kritika edu_6.png',
+                    'img/kritika edu_7.png',
+                    'img/kritika edu_8.png',
+                    'img/kritika edu_9.png'
+                ],
+                demo_url: 'https://kritika-edu.vercel.app/'
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentId = urlParams.get('id') || 'tanibantu';
+        if (!projectsData[currentId]) {
+            currentId = 'tanibantu';
+        }
+
+        const project = projectsData[currentId];
+
+        // Populate Page Details
+        document.title = 'RAFFZ | ' + project.title;
+        document.getElementById('projectTitle').textContent = project.title;
+        document.getElementById('projectYear').textContent = project.year;
+        document.getElementById('projectDesc').textContent = project.desc;
+
+        // Tags
+        const tagsContainer = document.getElementById('projectTags');
+        tagsContainer.innerHTML = project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
+
+        // Demo link
+        const demoContainer = document.getElementById('demoContainer');
+        const demoLink = document.getElementById('demoLink');
+        if (project.demo_url) {
+            demoLink.href = project.demo_url;
+        } else {
+            demoContainer.style.display = 'none';
+        }
+
+        // Roles
+        const roleBadges = document.getElementById('roleBadges');
+        if (project.roles && project.roles.length) {
+            roleBadges.innerHTML = project.roles.map(r => `<span class="role-badge"><i class="fa-solid fa-check text-xs"></i> ${r}</span>`).join('');
+        } else {
+            roleBadges.innerHTML = '<span class="text-zinc-500 text-sm">Tidak ada informasi peran.</span>';
+        }
+
+        // Tech Stack
+        const techBadges = document.getElementById('techBadges');
+        if (project.technologies && project.technologies.length) {
+            techBadges.innerHTML = project.technologies.map(t => `<span class="tech-badge"><i class="fa-solid fa-code text-red-400 text-xs"></i> ${t}</span>`).join('');
+        } else {
+            techBadges.innerHTML = '<span class="text-zinc-500 text-sm">Tidak ada informasi teknologi.</span>';
+        }
+
+        // Carousel Images & Dots
         const carousel = document.getElementById('projectCarousel');
-        const dots = document.querySelectorAll('.carousel-dots .dot');
+        const dotsContainer = document.getElementById('carouselDots');
+        carousel.innerHTML = project.images.map((img, idx) => `
+            <div class="carousel-slide">
+                <img src="${img}" alt="${project.title} Screenshot ${idx+1}" class="carousel-img">
+            </div>
+        `).join('');
+
+        dotsContainer.innerHTML = project.images.map((_, idx) => `
+            <span class="dot ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})"></span>
+        `).join('');
+
         let currentSlide = 0;
-        const totalSlides = <?php echo count($project['images']); ?>;
+        const totalSlides = project.images.length;
 
         function updateCarousel() {
             if(!carousel) return;
             carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-            dots.forEach((dot, index) => {
+            document.querySelectorAll('.carousel-dots .dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
         }

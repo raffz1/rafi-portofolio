@@ -1,26 +1,3 @@
-<?php
-/**
- * RAFFZ Portfolio - Contact Page
- * Clean Dark Aesthetic Stack (PHP & Tailwind CSS)
- */
-
-$formSubmitted = false;
-$feedbackMsg = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
-    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
-    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
-
-    if (!empty($name) && !empty($email) && !empty($message)) {
-        $formSubmitted = true;
-        $feedbackMsg = 'Terima kasih, pesan Anda telah terkirim! Saya akan segera menghubungi Anda kembali.';
-    } else {
-        $feedbackMsg = 'Mohon lengkapi semua kolom yang wajib diisi.';
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -66,17 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header class="capsule-header">
         <nav class="capsule-nav">
             <!-- Left: Logo Badge -->
-            <a href="index.php" class="capsule-logo" aria-label="Home">RAFFZ</a>
+            <a href="index.html" class="capsule-logo" aria-label="Home">RAFFZ</a>
 
             <!-- Center: Links Dock -->
             <div class="capsule-links" id="capsuleLinks">
                 <div class="nav-indicator"></div>
-                <a href="index.php" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="journey.php" class="capsule-link"><i class="fa-solid fa-route"></i> Journey</a>
-                <a href="project.php" class="capsule-link"><i class="fa-solid fa-rocket"></i> Projects</a>
-                <a href="certificate.php" class="capsule-link"><i class="fa-solid fa-award"></i> Certificates</a>
-                <a href="gallery.php" class="capsule-link"><i class="fa-solid fa-images"></i> Gallery</a>
-                <a href="contact.php" class="capsule-link active"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="index.html" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="journey.html" class="capsule-link"><i class="fa-solid fa-route"></i> Journey</a>
+                <a href="projects.html" class="capsule-link"><i class="fa-solid fa-rocket"></i> Projects</a>
+                <a href="certificate.html" class="capsule-link"><i class="fa-solid fa-award"></i> Certificates</a>
+                <a href="gallery.html" class="capsule-link"><i class="fa-solid fa-images"></i> Gallery</a>
+                <a href="contact.html" class="capsule-link active"><i class="fa-solid fa-envelope"></i> Contact</a>
             </div>
 
             <!-- Right: Actions & Mobile Hamburger -->
@@ -106,13 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </p>
         </div>
 
-        <?php if ($formSubmitted): ?>
-            <div class="mb-8 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-lg"></i>
-                <p class="text-sm font-medium"><?php echo htmlspecialchars($feedbackMsg); ?></p>
-            </div>
-        <?php endif; ?>
-
+        
         <!-- Two-Column Ergonomic Layout -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
@@ -195,11 +166,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Right Column: Clean Contact Form -->
             <div class="lg:col-span-7 scroll-reveal delay-200">
-                <form action="https://api.web3forms.com/submit" method="POST" class="p-6 md:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 backdrop-blur-md space-y-5">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="p-6 md:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 backdrop-blur-md space-y-5">
                     
                     <!-- Web3Forms Configuration -->
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="access_key" value="044b5039-aa91-4877-8a77-ec202605949c">
+                    <input type="hidden" name="subject" value="Pesan Baru dari Portofolio RAFFZ">
                     <input type="hidden" name="from_name" value="Portfolio Visitor">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
@@ -222,10 +195,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <textarea id="message" name="message" rows="5" required placeholder="Tuliskan detail kebutuhan, pertanyaan, atau ide yang ingin Anda sampaikan..." class="w-full bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition-colors text-sm resize-y"></textarea>
                     </div>
 
+                    <!-- Notification Banner / Toast -->
+                    <div id="formStatus" class="hidden p-4 rounded-xl text-sm transition-all duration-300"></div>
+
                     <div>
-                        <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-200 shadow-sm text-sm">
-                            <span>Kirim Pesan</span>
-                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <button type="submit" id="submitBtn" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3 px-8 rounded-xl transition-all duration-200 shadow-sm text-sm">
+                            <span id="btnText">Kirim Pesan</span>
+                            <i id="btnIcon" class="fa-solid fa-paper-plane text-xs"></i>
                         </button>
                     </div>
 
@@ -244,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Column 1: Brand & Status -->
                 <div class="md:col-span-5 space-y-4">
                     <div class="flex items-center gap-3">
-                        <a href="index.php" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
+                        <a href="index.html" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
                             RAFFZ
                         </a>
                     </div>
@@ -257,12 +233,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="md:col-span-3 space-y-3">
                     <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Navigation</span>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="index.php" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="journey.php" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
-                        <li><a href="project.php" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
-                        <li><a href="certificate.php" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
-                        <li><a href="gallery.php" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
-                        <li><a href="contact.php" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="index.html" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="journey.html" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
+                        <li><a href="projects.html" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="certificate.html" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
+                        <li><a href="gallery.html" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
@@ -276,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.linkedin.com/in/rafi-zhevirgi" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                            <a href="https://linkedin.com/in/rafi-zhevirgi" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
                                 <i class="fa-brands fa-linkedin text-zinc-500"></i> linkedin.com/in/rafi-zhevirgi
                             </a>
                         </li>
@@ -318,6 +294,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         copyBtn.classList.remove('bg-emerald-600', 'text-white');
                     }, 2000);
                 });
+            });
+        }
+
+        // Web3Forms AJAX Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const formStatus = document.getElementById('formStatus');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Reset and hide previous status banner
+                formStatus.classList.add('hidden');
+                formStatus.className = 'hidden p-4 rounded-xl text-sm transition-all duration-300';
+                formStatus.innerHTML = '';
+
+                // Set button to loading state
+                if (submitBtn) submitBtn.disabled = true;
+                if (btnText) btnText.textContent = 'Mengirim...';
+                if (btnIcon) btnIcon.className = 'fa-solid fa-spinner fa-spin text-xs';
+
+                const formData = new FormData(contactForm);
+
+                // Handle subject fallback if user left subject blank
+                const subjectInput = contactForm.querySelector('input[type="text"][name="subject"]');
+                if (subjectInput && !subjectInput.value.trim()) {
+                    formData.set('subject', 'Pesan Baru dari Portofolio RAFFZ');
+                } else if (subjectInput && subjectInput.value.trim()) {
+                    formData.set('subject', subjectInput.value.trim());
+                }
+
+                try {
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const data = await response.json();
+
+                    if (response.status === 200 && data.success) {
+                        // Success state
+                        contactForm.reset();
+                        formStatus.className = 'p-4 rounded-xl text-sm transition-all duration-300 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-start gap-3';
+                        formStatus.innerHTML = `
+                            <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 text-base flex-shrink-0"></i>
+                            <div>
+                                <p class="font-semibold text-white">Pesan berhasil terkirim!</p>
+                                <p class="text-xs text-emerald-300/80 mt-0.5">Terima kasih telah menghubungi saya. Saya akan segera membalas pesan Anda.</p>
+                            </div>
+                        `;
+                        formStatus.classList.remove('hidden');
+                    } else {
+                        throw new Error(data.message || 'Gagal mengirim pesan');
+                    }
+                } catch (error) {
+                    // Error state
+                    formStatus.className = 'p-4 rounded-xl text-sm transition-all duration-300 bg-red-500/10 border border-red-500/30 text-red-400 flex items-start gap-3';
+                    formStatus.innerHTML = `
+                        <i class="fa-solid fa-circle-exclamation text-red-400 mt-0.5 text-base flex-shrink-0"></i>
+                        <div>
+                            <p class="font-semibold text-white">Terjadi kesalahan</p>
+                            <p class="text-xs text-red-300/80 mt-0.5">Silakan coba lagi atau email langsung ke <a href="mailto:rafizhevirgialwafa@gmail.com" class="underline hover:text-white font-medium">rafizhevirgialwafa@gmail.com</a>.</p>
+                        </div>
+                    `;
+                    formStatus.classList.remove('hidden');
+                } finally {
+                    // Restore submit button
+                    if (submitBtn) submitBtn.disabled = false;
+                    if (btnText) btnText.textContent = 'Kirim Pesan';
+                    if (btnIcon) btnIcon.className = 'fa-solid fa-paper-plane text-xs';
+                }
             });
         }
     </script>

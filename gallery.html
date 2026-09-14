@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAFFZ | Experience & Activity Gallery</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: '#dc2626',
+                        void: '#070709',
+                        surface: '#121218'
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css?v=13.0">
+</head>
+<body class="dark-mode bg-[#070709] text-white">
+    <!-- Ambient Background Texture & Glow -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-gradient-to-b from-red-600/15 via-red-950/8 to-transparent blur-[130px] rounded-full"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_15%,#000_70%,transparent_100%)]"></div>
+        <div class="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#ffffff_1.2px,transparent_1.2px)] [background-size:20px_20px]"></div>
+    </div>
+
+    <!-- Dynamic Floating Capsule Navbar Dock -->
+    <header class="capsule-header">
+        <nav class="capsule-nav">
+            <!-- Left: Logo Badge -->
+            <a href="index.html" class="capsule-logo" aria-label="Home">RAFFZ</a>
+
+            <!-- Center / Links -->
+            <div class="capsule-links" id="capsuleLinks">
+                <div class="nav-indicator"></div>
+                <a href="index.html" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="journey.html" class="capsule-link"><i class="fa-solid fa-route"></i> Journey</a>
+                <a href="projects.html" class="capsule-link"><i class="fa-solid fa-rocket"></i> Projects</a>
+                <a href="certificate.html" class="capsule-link"><i class="fa-solid fa-award"></i> Certificates</a>
+                <a href="gallery.html" class="capsule-link active"><i class="fa-solid fa-images"></i> Gallery</a>
+                <a href="contact.html" class="capsule-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </div>
+
+            <!-- Right: Mobile Menu Toggle Button -->
+            <div class="capsule-actions">
+                <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="gallery-page max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 relative z-10">
+        <header class="text-center mb-16 scroll-reveal">
+            <span class="hero-greeting font-mono text-xs mb-2">
+                [ MOMENTS & ACTIVITIES ]
+            </span>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 font-heading text-white">
+                Experience Gallery
+            </h1>
+            <p class="text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
+                Kilas balik momen penting, aktivitas organisasi kampus, simposium teknologi, dan aksi kolaborasi nyata di lapangan.
+            </p>
+        </header>
+
+        <!-- Sorting Controls Bar -->
+        <div class="flex items-center justify-end mb-8 max-w-7xl mx-auto scroll-reveal">
+            <div class="flex items-center gap-2">
+                <label for="sortSelect" class="text-xs text-zinc-400 font-medium">Urutkan:</label>
+                <select id="sortSelect" data-target="#galleryContainer" class="bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-red-600 cursor-pointer transition">
+                    <option value="default">Default</option>
+                    <option value="latest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="az">Abjad (A-Z)</option>
+                    <option value="za">Abjad (Z-A)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Masonry Column Layout for Mixed Orientations -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 max-w-7xl mx-auto px-0" id="galleryContainer">
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/1 November 2024_Belajar Bersama Siswa ABK di SLB.jpg"
+                 data-title="Belajar Bersama Siswa ABK di SLB YPAC Kota Malang"
+                 data-date="1 November 2024"
+                 data-desc="Aktivitas pengabdian mendampingi dan berbagi keceriaan bersama siswa ABK di SLB YPAC Malang."
+                 data-year="2024"
+                 data-default-index="0">
+                <div class="overflow-hidden">
+                    <img src="img/1 November 2024_Belajar Bersama Siswa ABK di SLB.jpg" 
+                         alt="Belajar Bersama Siswa ABK di SLB YPAC Kota Malang" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            1 November 2024                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Belajar Bersama Siswa ABK di SLB YPAC Kota Malang                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Aktivitas pengabdian mendampingi dan berbagi keceriaan bersama siswa ABK di SLB YPAC Malang.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/21 September 2024_Schotival.jpg"
+                 data-title="Schotival: Scholarship Festival"
+                 data-date="21 September 2024"
+                 data-desc="Dokumentasi partisipasi dalam Schotival 2024 oleh BEM FILKOM UB."
+                 data-year="2024"
+                 data-default-index="1">
+                <div class="overflow-hidden">
+                    <img src="img/21 September 2024_Schotival.jpg" 
+                         alt="Schotival: Scholarship Festival" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            21 September 2024                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Schotival: Scholarship Festival                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Dokumentasi partisipasi dalam Schotival 2024 oleh BEM FILKOM UB.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/17 Maret 2025_Bhakti BCA.jpg"
+                 data-title="Seminar Bakti BCA: Berbagi Ilmu"
+                 data-date="17 Maret 2025"
+                 data-desc="Menghadiri seminar Bakti BCA dari PT Bank Central Asia Tbk."
+                 data-year="2025"
+                 data-default-index="2">
+                <div class="overflow-hidden">
+                    <img src="img/17 Maret 2025_Bhakti BCA.jpg" 
+                         alt="Seminar Bakti BCA: Berbagi Ilmu" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            17 Maret 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Seminar Bakti BCA: Berbagi Ilmu                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Menghadiri seminar Bakti BCA dari PT Bank Central Asia Tbk.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/17 Maret 2025_Bakti BCA.jpg"
+                 data-title="Seminar Bakti BCA: Berbagi Ilmu"
+                 data-date="17 Maret 2025"
+                 data-desc="Seminar Bakti BCA dari PT Bank Central Asia Tbk bersama Nicholas Saputra."
+                 data-year="2025"
+                 data-default-index="3">
+                <div class="overflow-hidden">
+                    <img src="img/17 Maret 2025_Bakti BCA.jpg" 
+                         alt="Seminar Bakti BCA: Berbagi Ilmu" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            17 Maret 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Seminar Bakti BCA: Berbagi Ilmu                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Seminar Bakti BCA dari PT Bank Central Asia Tbk bersama Nicholas Saputra.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/7 Mei 2025_Seminar Edukasi Keuangan bersama OJK 2.jpg"
+                 data-title="Sosialisasi &amp; Edukasi Keuangan OJK"
+                 data-date="7 Mei 2025"
+                 data-desc="Mengikuti seminar edukasi finansial dan literasi perencanaan masa depan bersama OJK."
+                 data-year="2025"
+                 data-default-index="4">
+                <div class="overflow-hidden">
+                    <img src="img/7 Mei 2025_Seminar Edukasi Keuangan bersama OJK 2.jpg" 
+                         alt="Sosialisasi &amp; Edukasi Keuangan OJK" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            7 Mei 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Sosialisasi &amp; Edukasi Keuangan OJK                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Mengikuti seminar edukasi finansial dan literasi perencanaan masa depan bersama OJK.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/16 Mei 2025_Talkshow Qur&#039;ani Bersama Muzammil Hasballah.jpg"
+                 data-title="Talkshow Qur&#039;ani Bersama Muzammil Hasballah"
+                 data-date="16 Mei 2025"
+                 data-desc="Ikut dalam talkshow inspiratif keagamaan bersama Qori&#039; Muzammil Hasballah."
+                 data-year="2025"
+                 data-default-index="5">
+                <div class="overflow-hidden">
+                    <img src="img/16 Mei 2025_Talkshow Qur&#039;ani Bersama Muzammil Hasballah.jpg" 
+                         alt="Talkshow Qur&#039;ani Bersama Muzammil Hasballah" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            16 Mei 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Talkshow Qur&#039;ani Bersama Muzammil Hasballah                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Ikut dalam talkshow inspiratif keagamaan bersama Qori&#039; Muzammil Hasballah.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/23 Mei 2025_Mahasiwa Mengajar KBMDSI.jpg"
+                 data-title="Mahasiswa Mengajar KBMDSI"
+                 data-date="23 Mei 2025"
+                 data-desc="Mengajar di SDN Pandanlandung untuk mengenalkan pemahaman logika dan teknologi dasar."
+                 data-year="2025"
+                 data-default-index="6">
+                <div class="overflow-hidden">
+                    <img src="img/23 Mei 2025_Mahasiwa Mengajar KBMDSI.jpg" 
+                         alt="Mahasiswa Mengajar KBMDSI" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            23 Mei 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Mahasiswa Mengajar KBMDSI                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Mengajar di SDN Pandanlandung untuk mengenalkan pemahaman logika dan teknologi dasar.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/14 Juni 2025_First Gathering Panitia RAJA Brawijaya 2025.jpg"
+                 data-title="First Gathering Panitia RAJA Brawijaya 2025"
+                 data-date="14 Juni 2025"
+                 data-desc="First Gathering panitia RAJA Brawijaya, ketemu banyak temen-temen baru disini."
+                 data-year="2025"
+                 data-default-index="7">
+                <div class="overflow-hidden">
+                    <img src="img/14 Juni 2025_First Gathering Panitia RAJA Brawijaya 2025.jpg" 
+                         alt="First Gathering Panitia RAJA Brawijaya 2025" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            14 Juni 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        First Gathering Panitia RAJA Brawijaya 2025                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        First Gathering panitia RAJA Brawijaya, ketemu banyak temen-temen baru disini.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/15 Juni 2025_Volunteer Peduly Malang bersama Anak-Anak Panti Asuhan.jpeg"
+                 data-title="Volunteer Peduly Malang: Berbagi &amp; Kreasi Dimsum"
+                 data-date="15 Juni 2025"
+                 data-desc="Aksi kerelawanan seru membuat dimsum bersama adik-adik panti asuhan di Malang."
+                 data-year="2025"
+                 data-default-index="8">
+                <div class="overflow-hidden">
+                    <img src="img/15 Juni 2025_Volunteer Peduly Malang bersama Anak-Anak Panti Asuhan.jpeg" 
+                         alt="Volunteer Peduly Malang: Berbagi &amp; Kreasi Dimsum" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            15 Juni 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Volunteer Peduly Malang: Berbagi &amp; Kreasi Dimsum                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Aksi kerelawanan seru membuat dimsum bersama adik-adik panti asuhan di Malang.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/3 Agustus 2025_Buthak Summit.jpg"
+                 data-title="Ekspedisi Puncak Gunung Buthak"
+                 data-date="3 Agustus 2025"
+                 data-desc="Mendaki dan mencapai puncak Gunung Buthak."
+                 data-year="2025"
+                 data-default-index="9">
+                <div class="overflow-hidden">
+                    <img src="img/3 Agustus 2025_Buthak Summit.jpg" 
+                         alt="Ekspedisi Puncak Gunung Buthak" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            3 Agustus 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Ekspedisi Puncak Gunung Buthak                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Mendaki dan mencapai puncak Gunung Buthak.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/10 Agustus 2025_RABRAW Daring.jpeg"
+                 data-title="RAJA Brawijaya 2025 Day 2 - Daring"
+                 data-date="10 Agustus 2025"
+                 data-desc="RAJA Brawijaya 2025 - daring, bersama dengan rekan-rekan SPV Cluster 42."
+                 data-year="2025"
+                 data-default-index="10">
+                <div class="overflow-hidden">
+                    <img src="img/10 Agustus 2025_RABRAW Daring.jpeg" 
+                         alt="RAJA Brawijaya 2025 Day 2 - Daring" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            10 Agustus 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        RAJA Brawijaya 2025 Day 2 - Daring                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        RAJA Brawijaya 2025 - daring, bersama dengan rekan-rekan SPV Cluster 42.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/11 Agustus 2025_SPV Cluster 42 RAJA Brawijaya 2025.jpeg"
+                 data-title="Supervisor Cluster 42 pada RAJA Brawijaya 2025"
+                 data-date="11 Agustus 2025"
+                 data-desc="Jadi pendamping mahasiswa baru Cluster 42 dalam kegiatan RAJA Brawijaya 2025."
+                 data-year="2025"
+                 data-default-index="11">
+                <div class="overflow-hidden">
+                    <img src="img/11 Agustus 2025_SPV Cluster 42 RAJA Brawijaya 2025.jpeg" 
+                         alt="Supervisor Cluster 42 pada RAJA Brawijaya 2025" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            11 Agustus 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Supervisor Cluster 42 pada RAJA Brawijaya 2025                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Jadi pendamping mahasiswa baru Cluster 42 dalam kegiatan RAJA Brawijaya 2025.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/agustus-november_divisi fasilitator pada pkkmb filkom 2025.jpeg"
+                 data-title="Fasilitator Cluster 25 pada PKKMB dan Startup Academy  FILKOM UB"
+                 data-date="Agustus � November 2025"
+                 data-desc="Jadi pendamping mahasiswa baru Cluster 25 di PKKMB dan Startup Academy FILKOM UB."
+                 data-year="2025"
+                 data-default-index="12">
+                <div class="overflow-hidden">
+                    <img src="img/agustus-november_divisi fasilitator pada pkkmb filkom 2025.jpeg" 
+                         alt="Fasilitator Cluster 25 pada PKKMB dan Startup Academy  FILKOM UB" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            Agustus � November 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Fasilitator Cluster 25 pada PKKMB dan Startup Academy  FILKOM UB                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Jadi pendamping mahasiswa baru Cluster 25 di PKKMB dan Startup Academy FILKOM UB.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/11 Oktober 2025_Panitia Divisi Acara SOS DSI 2025.jpeg"
+                 data-title="Divisi Acara SOS FILKOM 2025"
+                 data-date="11 Oktober 2025"
+                 data-desc="Jadi staff divisi Acara pada kegiatan Synergy of Symphony (SOS) DSI FILKOM UB."
+                 data-year="2025"
+                 data-default-index="13">
+                <div class="overflow-hidden">
+                    <img src="img/11 Oktober 2025_Panitia Divisi Acara SOS DSI 2025.jpeg" 
+                         alt="Divisi Acara SOS FILKOM 2025" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            11 Oktober 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Divisi Acara SOS FILKOM 2025                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Jadi staff divisi Acara pada kegiatan Synergy of Symphony (SOS) DSI FILKOM UB.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/11 Oktober 2025_Panitia SOS 2025.JPG"
+                 data-title="Kepanitiaan SOS FILKOM 2025"
+                 data-date="11 Oktober 2025"
+                 data-desc="Dokumentasi tim panitia di balik layar kesuksesan agenda SOS DSI FILKOM UB."
+                 data-year="2025"
+                 data-default-index="14">
+                <div class="overflow-hidden">
+                    <img src="img/11 Oktober 2025_Panitia SOS 2025.JPG" 
+                         alt="Kepanitiaan SOS FILKOM 2025" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            11 Oktober 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Kepanitiaan SOS FILKOM 2025                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Dokumentasi tim panitia di balik layar kesuksesan agenda SOS DSI FILKOM UB.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/22 Oktober 2025_brawijaya bersholawat bersama gus ilham.jpeg"
+                 data-title="Brawijaya Bersholawat Bersama Gus Ilham"
+                 data-date="22 Oktober 2025"
+                 data-desc="Brawijaya Bersholawat dalam rangka memperingati hari santri nasional bersama Gus Ilham Pasuruan."
+                 data-year="2025"
+                 data-default-index="15">
+                <div class="overflow-hidden">
+                    <img src="img/22 Oktober 2025_brawijaya bersholawat bersama gus ilham.jpeg" 
+                         alt="Brawijaya Bersholawat Bersama Gus Ilham" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            22 Oktober 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Brawijaya Bersholawat Bersama Gus Ilham                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Brawijaya Bersholawat dalam rangka memperingati hari santri nasional bersama Gus Ilham Pasuruan.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/30 oktober 2025_brawijaya inspire talk 2025.jpeg"
+                 data-title="Brawijaya Inspire Talk Universitas Brawijaya"
+                 data-date="30 Oktober 2025"
+                 data-desc="Seminar inspiratif mengenai wawasan kepemimpinan dan inovasi generasi muda (bareng Ferry Irwandi)."
+                 data-year="2025"
+                 data-default-index="16">
+                <div class="overflow-hidden">
+                    <img src="img/30 oktober 2025_brawijaya inspire talk 2025.jpeg" 
+                         alt="Brawijaya Inspire Talk Universitas Brawijaya" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            30 Oktober 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Brawijaya Inspire Talk Universitas Brawijaya                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Seminar inspiratif mengenai wawasan kepemimpinan dan inovasi generasi muda (bareng Ferry Irwandi).                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/2 November 2025_idea fest 4 - undhira bali.jpeg"
+                 data-title="Finalis IDEA Festival 4 di Universitas Dhyana Pura Bali"
+                 data-date="2 November 2025"
+                 data-desc="Kompetisi bisnis plan tingkat nasional di Universitas Dhyana Pura, Bali."
+                 data-year="2025"
+                 data-default-index="17">
+                <div class="overflow-hidden">
+                    <img src="img/2 November 2025_idea fest 4 - undhira bali.jpeg" 
+                         alt="Finalis IDEA Festival 4 di Universitas Dhyana Pura Bali" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            2 November 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Finalis IDEA Festival 4 di Universitas Dhyana Pura Bali                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Kompetisi bisnis plan tingkat nasional di Universitas Dhyana Pura, Bali.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/15 november 2026_cipta nusantara fest business plan competition.jpeg"
+                 data-title="Cipta Nusantara Fest Business Plan Competition"
+                 data-date="15 November 2025"
+                 data-desc="Kompetisi ide bisnis produk inovatif berbasis teknologi dan transformasi berkelanjutan. Dapet Silver Medal"
+                 data-year="2025"
+                 data-default-index="18">
+                <div class="overflow-hidden">
+                    <img src="img/15 november 2026_cipta nusantara fest business plan competition.jpeg" 
+                         alt="Cipta Nusantara Fest Business Plan Competition" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            15 November 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Cipta Nusantara Fest Business Plan Competition                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Kompetisi ide bisnis produk inovatif berbasis teknologi dan transformasi berkelanjutan. Dapet Silver Medal                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/15 Desember 2025_Festival Dies Natalis UB.jpg"
+                 data-title="Festival Dies Natalis Universitas Brawijaya"
+                 data-date="15 Desember 2025"
+                 data-desc="Memeriahkan perayaan Dies Natalis Universitas Brawijaya."
+                 data-year="2025"
+                 data-default-index="19">
+                <div class="overflow-hidden">
+                    <img src="img/15 Desember 2025_Festival Dies Natalis UB.jpg" 
+                         alt="Festival Dies Natalis Universitas Brawijaya" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            15 Desember 2025                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Festival Dies Natalis Universitas Brawijaya                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Memeriahkan perayaan Dies Natalis Universitas Brawijaya.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/12 maret 2026_QU berbagi.jpeg"
+                 data-title="QU Berbagi: Bagi-bagi Takjil Buka Puasa"
+                 data-date="12 Maret 2026"
+                 data-desc="Berbagi takjil buka puasa bersama temen-temen QU."
+                 data-year="2026"
+                 data-default-index="20">
+                <div class="overflow-hidden">
+                    <img src="img/12 maret 2026_QU berbagi.jpeg" 
+                         alt="QU Berbagi: Bagi-bagi Takjil Buka Puasa" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            12 Maret 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        QU Berbagi: Bagi-bagi Takjil Buka Puasa                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Berbagi takjil buka puasa bersama temen-temen QU.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/3 mei 2026_first gathering panitia filkom league 2026.jpeg"
+                 data-title="First Gathering Panitia FILKOM League 2026"
+                 data-date="3 Mei 2026"
+                 data-desc="Kumpul perdana panitia kompetisi olahraga mahasiswa se-FILKOM UB."
+                 data-year="2026"
+                 data-default-index="21">
+                <div class="overflow-hidden">
+                    <img src="img/3 mei 2026_first gathering panitia filkom league 2026.jpeg" 
+                         alt="First Gathering Panitia FILKOM League 2026" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            3 Mei 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        First Gathering Panitia FILKOM League 2026                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Kumpul perdana panitia kompetisi olahraga mahasiswa se-FILKOM UB.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/4 mei 2026 wawancara kebutuhan user untuk pengembangan path deck.jpeg"
+                 data-title="Wawancara Kebutuhan Pengguna untuk Pengembangan Web Path Deck"
+                 data-date="4 Mei 2026"
+                 data-desc="Wawancara di SMKN 3 Malang mengenai kebutuhan user untuk pengembangan web Path Deck."
+                 data-year="2026"
+                 data-default-index="22">
+                <div class="overflow-hidden">
+                    <img src="img/4 mei 2026 wawancara kebutuhan user untuk pengembangan path deck.jpeg" 
+                         alt="Wawancara Kebutuhan Pengguna untuk Pengembangan Web Path Deck" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            4 Mei 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Wawancara Kebutuhan Pengguna untuk Pengembangan Web Path Deck                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Wawancara di SMKN 3 Malang mengenai kebutuhan user untuk pengembangan web Path Deck.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/14 juni 2026 dokumentasi tim mmd dm ub desa talang.jpeg"
+                 data-title="Tim MMD Doktor Mengabdi UB 2026 - Desa Talang, Kecamatan Sendang, Tulungagung"
+                 data-date="14 Juni 2026"
+                 data-desc="Dokumentasi keakraban tim pengabdian masyarakat di Desa Talang."
+                 data-year="2026"
+                 data-default-index="23">
+                <div class="overflow-hidden">
+                    <img src="img/14 juni 2026 dokumentasi tim mmd dm ub desa talang.jpeg" 
+                         alt="Tim MMD Doktor Mengabdi UB 2026 - Desa Talang, Kecamatan Sendang, Tulungagung" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            14 Juni 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Tim MMD Doktor Mengabdi UB 2026 - Desa Talang, Kecamatan Sendang, Tulungagung                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Dokumentasi keakraban tim pengabdian masyarakat di Desa Talang.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/9 juli 2026 pembukaan mmd dm ub desa talang.jpeg"
+                 data-title="Pembukaan MMD DM UB Desa Talang"
+                 data-date="9 Juli 2026"
+                 data-desc="Seremoni pembukaan pengabdian mahasiswa bersama perangkat desa dan tokoh masyarakat."
+                 data-year="2026"
+                 data-default-index="24">
+                <div class="overflow-hidden">
+                    <img src="img/9 juli 2026 pembukaan mmd dm ub desa talang.jpeg" 
+                         alt="Pembukaan MMD DM UB Desa Talang" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            9 Juli 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Pembukaan MMD DM UB Desa Talang                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Seremoni pembukaan pengabdian mahasiswa bersama perangkat desa dan tokoh masyarakat.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/13 juli 2026 posyandu ilc desa dono.JPG"
+                 data-title="Pendampingan Posyandu ILP di Desa Dono"
+                 data-date="13 Juli 2026"
+                 data-desc="Pendampingan Posyandu Integrasi Layanan Primer (ILP) bersama Puskesmas Dono di Balai Desa Dono, Tulungagung."
+                 data-year="2026"
+                 data-default-index="25">
+                <div class="overflow-hidden">
+                    <img src="img/13 juli 2026 posyandu ilc desa dono.JPG" 
+                         alt="Pendampingan Posyandu ILP di Desa Dono" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            13 Juli 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Pendampingan Posyandu ILP di Desa Dono                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Pendampingan Posyandu Integrasi Layanan Primer (ILP) bersama Puskesmas Dono di Balai Desa Dono, Tulungagung.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/19 juli 2026 edu health fair 1 desa talang.JPG"
+                 data-title="Edukasi Kesehatan Masyarakat (Edu Health Fair 1)"
+                 data-date="19 Juli 2026"
+                 data-desc="Edukasi Kesehatan Masyarakat tentang pencegahan penyakit menular dan kardiovaskular dengan media teknologi interaktif di Desa Talang"
+                 data-year="2026"
+                 data-default-index="26">
+                <div class="overflow-hidden">
+                    <img src="img/19 juli 2026 edu health fair 1 desa talang.JPG" 
+                         alt="Edukasi Kesehatan Masyarakat (Edu Health Fair 1)" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            19 Juli 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Edukasi Kesehatan Masyarakat (Edu Health Fair 1)                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Edukasi Kesehatan Masyarakat tentang pencegahan penyakit menular dan kardiovaskular dengan media teknologi interaktif di Desa Talang                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/25 juli 2026 mengajar tpq sabilul muttaqien desa talang.jpeg"
+                 data-title="Mengajar Mengaji di TPQ Sabilul Muttaqien"
+                 data-date="25 Juli 2026"
+                 data-desc="Kegiatan rutin mengajar mengaji di TPQ Sabilul Muttaqien Desa Talang."
+                 data-year="2026"
+                 data-default-index="27">
+                <div class="overflow-hidden">
+                    <img src="img/25 juli 2026 mengajar tpq sabilul muttaqien desa talang.jpeg" 
+                         alt="Mengajar Mengaji di TPQ Sabilul Muttaqien" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            25 Juli 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Mengajar Mengaji di TPQ Sabilul Muttaqien                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Kegiatan rutin mengajar mengaji di TPQ Sabilul Muttaqien Desa Talang.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/26 juli 2026 edu health fair 2.JPG"
+                 data-title="Edukasi Kesehatan Masyarakat (Edu Health Fair 2)"
+                 data-date="26 Juli 2026"
+                 data-desc="Hari kedua Edukasi Kesehatan Masyarakat tentang pencegahan penyakit menular dan kardiovaskular dengan media teknologi interaktif di Desa Talang"
+                 data-year="2026"
+                 data-default-index="28">
+                <div class="overflow-hidden">
+                    <img src="img/26 juli 2026 edu health fair 2.JPG" 
+                         alt="Edukasi Kesehatan Masyarakat (Edu Health Fair 2)" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            26 Juli 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Edukasi Kesehatan Masyarakat (Edu Health Fair 2)                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Hari kedua Edukasi Kesehatan Masyarakat tentang pencegahan penyakit menular dan kardiovaskular dengan media teknologi interaktif di Desa Talang                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/28 juli 2026 program pelatihan canva edu untuk guru sd 3 talang.jpeg"
+                 data-title="Pelatihan Canva Edu untuk Guru SDN 3 Talang"
+                 data-date="28 Juli 2026"
+                 data-desc="Workshop interaktif pemanfaatan platform Canva untuk pembuatan media ajar digital bagi tenaga pendidik di SDN 3 Talang."
+                 data-year="2026"
+                 data-default-index="29">
+                <div class="overflow-hidden">
+                    <img src="img/28 juli 2026 program pelatihan canva edu untuk guru sd 3 talang.jpeg" 
+                         alt="Pelatihan Canva Edu untuk Guru SDN 3 Talang" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            28 Juli 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Pelatihan Canva Edu untuk Guru SDN 3 Talang                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Workshop interaktif pemanfaatan platform Canva untuk pembuatan media ajar digital bagi tenaga pendidik di SDN 3 Talang.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/2 agustus 2026 lomba hut ri tpq sabilul muttaqiien.JPG"
+                 data-title="Lomba Kemerdekaan HUT RI bersama Santri TPQ Sabilul Muttaqien"
+                 data-date="2 Agustus 2026"
+                 data-desc="Mengadakan perlombaan peringatan HUT RI yang diikuti santri TPQ Sabilul Muttaqien, SERU BANGET."
+                 data-year="2026"
+                 data-default-index="30">
+                <div class="overflow-hidden">
+                    <img src="img/2 agustus 2026 lomba hut ri tpq sabilul muttaqiien.JPG" 
+                         alt="Lomba Kemerdekaan HUT RI bersama Santri TPQ Sabilul Muttaqien" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            2 Agustus 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Lomba Kemerdekaan HUT RI bersama Santri TPQ Sabilul Muttaqien                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Mengadakan perlombaan peringatan HUT RI yang diikuti santri TPQ Sabilul Muttaqien, SERU BANGET.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/5 agustus 2026 penutupan mmd dm ub desa talang.jpeg"
+                 data-title="Penutupan MMD DM UB Desa Talang"
+                 data-date="5 Agustus 2026"
+                 data-desc="Penutupan MMD Doktor Mengabdi dan perpisahan bersama warga Desa Talang, Kabupaten Tulungagung."
+                 data-year="2026"
+                 data-default-index="31">
+                <div class="overflow-hidden">
+                    <img src="img/5 agustus 2026 penutupan mmd dm ub desa talang.jpeg" 
+                         alt="Penutupan MMD DM UB Desa Talang" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            5 Agustus 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Penutupan MMD DM UB Desa Talang                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Penutupan MMD Doktor Mengabdi dan perpisahan bersama warga Desa Talang, Kabupaten Tulungagung.                    </p>
+                </div>
+            </div>
+                        <div class="break-inside-avoid mb-6 rounded-2xl overflow-hidden bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 transition duration-300 group cursor-pointer gallery-view-trigger scroll-reveal"
+                 data-img="img/13 agustus 2026 mengajar les.png"
+                 data-title="Mengajar Les Anak-anak dengan perkenalan awal penerapan Teknologi Pembelajaran Interaktif"
+                 data-date="13 Agustus 2026"
+                 data-desc="Bimbingan belajar tatap muka dengan memperkenalkan penerapan teknologi pembelajaran interaktif untuk meningkatkan minat belajar anak-anak Les."
+                 data-year="2026"
+                 data-default-index="32">
+                <div class="overflow-hidden">
+                    <img src="img/13 agustus 2026 mengajar les.png" 
+                         alt="Mengajar Les Anak-anak dengan perkenalan awal penerapan Teknologi Pembelajaran Interaktif" 
+                         loading="lazy"
+                         class="w-full h-auto object-cover rounded-xl transition duration-500 group-hover:scale-[1.02]">
+                </div>
+                <div class="p-4 sm:p-5">
+                    <div class="mb-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20">
+                            <i class="fa-regular fa-calendar text-red-500 text-[10px]"></i>
+                            13 Agustus 2026                        </span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white mb-1.5 group-hover:text-red-400 transition-colors">
+                        Mengajar Les Anak-anak dengan perkenalan awal penerapan Teknologi Pembelajaran Interaktif                    </h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                        Bimbingan belajar tatap muka dengan memperkenalkan penerapan teknologi pembelajaran interaktif untuk meningkatkan minat belajar anak-anak Les.                    </p>
+                </div>
+            </div>
+                    </div>
+    </main>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="galleryModal" class="cert-modal" onclick="closeGalleryModal(event)">
+        <div class="cert-modal-content max-w-4xl" onclick="event.stopPropagation()">
+            <button class="cert-modal-close" onclick="closeGalleryModal()" aria-label="Tutup"><i class="fa-solid fa-xmark"></i></button>
+            <div class="p-4 sm:p-6 md:p-8 text-center flex flex-col items-center">
+                <div class="w-full flex items-center justify-center mb-4 max-h-[72vh] overflow-hidden rounded-xl bg-black/80 border border-white/10 shadow-2xl">
+                    <img id="galleryModalImg" src="" alt="Gallery Preview" class="max-w-full max-h-[72vh] w-auto h-auto object-contain mx-auto">
+                </div>
+                <div id="galleryModalDate" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-red-500/10 text-red-400 border border-red-500/20 mb-2"></div>
+                <h3 id="galleryModalTitle" class="text-lg md:text-2xl font-bold text-white mb-2 font-heading"></h3>
+                <p id="galleryModalDesc" class="text-zinc-400 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Asymmetric Developer Footer -->
+    <footer class="modern-footer">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10">
+                
+                <!-- Column 1: Brand & Status -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <a href="index.html" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
+                            RAFFZ
+                        </a>
+                    </div>
+                    <p class="text-zinc-400 text-sm max-w-sm leading-relaxed">
+                        Software engineer & digital artisan focusing on frontend architecture, user experience design, and interactive interfaces.
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Navigation -->
+                <div class="md:col-span-3 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Navigation</span>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="journey.html" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
+                        <li><a href="projects.html" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="certificate.html" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
+                        <li><a href="gallery.html" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Connect & Social -->
+                <div class="md:col-span-4 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Connect</span>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="mailto:rafizhevirgialwafa@gmail.com" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-solid fa-envelope text-zinc-500"></i> rafizhevirgialwafa@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/rafi-zhevirgi" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-linkedin text-zinc-500"></i> linkedin.com/in/rafi-zhevirgi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/raffz1" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-github text-zinc-500"></i> github.com/raffz1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/raffz.zhevv" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-instagram text-zinc-500"></i> @raffz.zhevv
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-zinc-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+                <p>&copy; 2026 Rafi Zhevirgi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=13.0"></script>
+    <script>
+        function openGalleryModal(imgSrc, title, date, desc) {
+            document.getElementById('galleryModalImg').src = imgSrc;
+            document.getElementById('galleryModalTitle').textContent = title;
+            document.getElementById('galleryModalDate').innerHTML = '<i class="fa-regular fa-calendar text-red-500 text-xs"></i>' + date;
+            document.getElementById('galleryModalDesc').textContent = desc;
+            document.getElementById('galleryModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGalleryModal(e) {
+            document.getElementById('galleryModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeGalleryModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.gallery-view-trigger').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    const imgSrc = trigger.getAttribute('data-img');
+                    const title = trigger.getAttribute('data-title');
+                    const date = trigger.getAttribute('data-date');
+                    const desc = trigger.getAttribute('data-desc');
+                    openGalleryModal(imgSrc, title, date, desc);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

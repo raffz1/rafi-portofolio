@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAFFZ | Certificates & Accreditations</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: '#dc2626',
+                        void: '#070709',
+                        surface: '#121218'
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css?v=13.0">
+    <style>
+        .cert-card.hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="dark-mode bg-[#070709] text-white">
+    <!-- Ambient Background Texture & Glow -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-gradient-to-b from-red-600/15 via-red-950/8 to-transparent blur-[130px] rounded-full"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_15%,#000_70%,transparent_100%)]"></div>
+        <div class="absolute inset-0 opacity-[0.035] bg-[radial-gradient(#ffffff_1.2px,transparent_1.2px)] [background-size:20px_20px]"></div>
+    </div>
+
+    <!-- Dynamic Floating Capsule Navbar Dock -->
+    <header class="capsule-header">
+        <nav class="capsule-nav">
+            <!-- Left: Logo Badge -->
+            <a href="index.html" class="capsule-logo" aria-label="Home">RAFFZ</a>
+
+            <!-- Center: Links Dock -->
+            <div class="capsule-links" id="capsuleLinks">
+                <div class="nav-indicator"></div>
+                <a href="index.html" class="capsule-link"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="journey.html" class="capsule-link"><i class="fa-solid fa-route"></i> Journey</a>
+                <a href="projects.html" class="capsule-link"><i class="fa-solid fa-rocket"></i> Projects</a>
+                <a href="certificate.html" class="capsule-link active"><i class="fa-solid fa-award"></i> Certificates</a>
+                <a href="gallery.html" class="capsule-link"><i class="fa-solid fa-images"></i> Gallery</a>
+                <a href="contact.html" class="capsule-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </div>
+
+            <!-- Right: Actions & Mobile Hamburger -->
+            <div class="capsule-actions">
+                <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="certificates-page max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 relative z-10">
+        <header class="text-center mb-12 scroll-reveal">
+            <span class="hero-greeting font-mono text-xs mb-2">
+                [ CERTIFICATION & AWARDS ]
+            </span>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 font-heading text-white">
+                Certificates & Awards
+            </h1>
+            <p class="text-zinc-400 max-w-xl mx-auto text-sm md:text-base">
+                Dokumentasi sertifikasi keahlian, keikutsertaan kompetisi nasional, seminar, kepanitiaan, serta aksi relawan sosial kemanusiaan.
+            </p>
+        </header>
+
+        <!-- Category Filters & Sorting Controls Bar -->
+        <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 mb-8 scroll-reveal">
+            <div class="cert-filter-container flex-wrap m-0">
+                <button class="cert-filter-btn active" data-filter="all">
+                    <i class="fa-solid fa-border-all"></i> Semua (34)
+                </button>
+                <button class="cert-filter-btn" data-filter="keahlian">
+                    <i class="fa-solid fa-laptop-code"></i> Keahlian
+                </button>
+                <button class="cert-filter-btn" data-filter="kompetisi">
+                    <i class="fa-solid fa-trophy"></i> Kompetisi
+                </button>
+                <button class="cert-filter-btn" data-filter="seminar">
+                    <i class="fa-solid fa-chalkboard-user"></i> Seminar & Webinar
+                </button>
+                <button class="cert-filter-btn" data-filter="kepanitiaan">
+                    <i class="fa-solid fa-users-gear"></i> Kepanitiaan
+                </button>
+                <button class="cert-filter-btn" data-filter="relawan">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Relawan
+                </button>
+            </div>
+
+            <div class="flex items-center gap-2 self-end lg:self-auto flex-shrink-0">
+                <label for="sortSelect" class="text-xs text-zinc-400 font-medium">Urutkan:</label>
+                <select id="sortSelect" data-target="#certificatesContainer" class="bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-red-600 cursor-pointer transition shadow-md">
+                    <option value="default">Default</option>
+                    <option value="latest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="az">Abjad (A-Z)</option>
+                    <option value="za">Abjad (Z-A)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full" id="certificatesContainer">
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Data Science Series 19.0"
+                 data-default-index="0">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/dibimbing data series 19.0.png"
+                         data-title="Data Science Series 19.0"
+                         data-issuer="dibimbing.id">
+                        <img src="img/dibimbing data series 19.0.png" alt="Data Science Series 19.0" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Data Science Series 19.0</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        dibimbing.id                    </div>
+                    <p class="project-desc mb-4">Pelatihan intensif pengolahan data, analisis data fundamental, dan visualisasi wawasan bisnis.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/dibimbing data series 19.0.png"
+                            data-title="Data Science Series 19.0"
+                            data-issuer="dibimbing.id">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Finance Series: Risk Management"
+                 data-default-index="1">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/dibimbing finance series risk management.png"
+                         data-title="Finance Series: Risk Management"
+                         data-issuer="dibimbing.id">
+                        <img src="img/dibimbing finance series risk management.png" alt="Finance Series: Risk Management" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Finance Series: Risk Management</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        dibimbing.id                    </div>
+                    <p class="project-desc mb-4">Pemahaman dasar mitigasi risiko finansial, evaluasi kelayakan bisnis, dan kepatuhan instrumen keuangan.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/dibimbing finance series risk management.png"
+                            data-title="Finance Series: Risk Management"
+                            data-issuer="dibimbing.id">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Finance Series: Internal Audit"
+                 data-default-index="2">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/dibimbing finance series internal audit.png"
+                         data-title="Finance Series: Internal Audit"
+                         data-issuer="dibimbing.id">
+                        <img src="img/dibimbing finance series internal audit.png" alt="Finance Series: Internal Audit" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Finance Series: Internal Audit</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        dibimbing.id                    </div>
+                    <p class="project-desc mb-4">Penguasaan prinsip internal audit, kontrol keuangan organisasi, dan standarisasi tata kelola.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/dibimbing finance series internal audit.png"
+                            data-title="Finance Series: Internal Audit"
+                            data-issuer="dibimbing.id">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Pengenalan Data Science"
+                 data-default-index="3">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/komdigi pengenalan data science.png"
+                         data-title="Pengenalan Data Science"
+                         data-issuer="Kementerian Komunikasi dan Digital">
+                        <img src="img/komdigi pengenalan data science.png" alt="Pengenalan Data Science" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Pengenalan Data Science</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Kementerian Komunikasi dan Digital                    </div>
+                    <p class="project-desc mb-4">Sertifikasi penguasaan konsep machine learning dasar, pemodelan data, dan ekosistem data digital.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/komdigi pengenalan data science.png"
+                            data-title="Pengenalan Data Science"
+                            data-issuer="Kementerian Komunikasi dan Digital">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Build an AI Agent"
+                 data-default-index="4">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate Build an AI Agent-1.png"
+                         data-title="Build an AI Agent"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate Build an AI Agent-1.png" alt="Build an AI Agent" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Build an AI Agent</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Pelatihan perancangan AI Agent terotomasi berbasis kecerdasan buatan dan alur logika terstruktur.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate Build an AI Agent-1.png"
+                            data-title="Build an AI Agent"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="IBM Granite Models Foundation"
+                 data-default-index="5">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate IBM Granite Models_SkillsBuild-1.png"
+                         data-title="IBM Granite Models Foundation"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate IBM Granite Models_SkillsBuild-1.png" alt="IBM Granite Models Foundation" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">IBM Granite Models Foundation</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Penguasaan arsitektur dasar model fondasi IBM Granite untuk implementasi solusi generatif AI enterprise.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate IBM Granite Models_SkillsBuild-1.png"
+                            data-title="IBM Granite Models Foundation"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Introduction to Large Language Models (LLM)"
+                 data-default-index="6">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate Introduction LLM_SkillsBuild-1.png"
+                         data-title="Introduction to Large Language Models (LLM)"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate Introduction LLM_SkillsBuild-1.png" alt="Introduction to Large Language Models (LLM)" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Introduction to Large Language Models (LLM)</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Fondasi teoretis Large Language Models, mekanisme prompt engineering, dan pemanfaatan arsitektur transformer.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate Introduction LLM_SkillsBuild-1.png"
+                            data-title="Introduction to Large Language Models (LLM)"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Troubleshooting with IBM Tools"
+                 data-default-index="7">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate Troubleshoot Using IBM Bob_SkillsBuild-1.png"
+                         data-title="Troubleshooting with IBM Tools"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate Troubleshoot Using IBM Bob_SkillsBuild-1.png" alt="Troubleshooting with IBM Tools" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Troubleshooting with IBM Tools</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Keterampilan identifikasi dan analisis troubleshooting sistem komputasi menggunakan platform IBM.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate Troubleshoot Using IBM Bob_SkillsBuild-1.png"
+                            data-title="Troubleshooting with IBM Tools"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Computer Network Fundamentals"
+                 data-default-index="8">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/id networkers jaringan.png"
+                         data-title="Computer Network Fundamentals"
+                         data-issuer="ID-Networkers">
+                        <img src="img/id networkers jaringan.png" alt="Computer Network Fundamentals" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Computer Network Fundamentals</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        ID-Networkers                    </div>
+                    <p class="project-desc mb-4">Pemahaman konfigurasi routing, switching, protokol TCP/IP, dan arsitektur infrastruktur jaringan dasar.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/id networkers jaringan.png"
+                            data-title="Computer Network Fundamentals"
+                            data-issuer="ID-Networkers">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Fundamental Copywriting Mastery"
+                 data-default-index="9">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/sertifikat-copywriting.png"
+                         data-title="Fundamental Copywriting Mastery"
+                         data-issuer="Skillpedia">
+                        <img src="img/sertifikat-copywriting.png" alt="Fundamental Copywriting Mastery" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Fundamental Copywriting Mastery</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Skillpedia                    </div>
+                    <p class="project-desc mb-4">Keterampilan penyusunan formula tulisan persuasif untuk konversi audiens dan strategi konten digital.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/sertifikat-copywriting.png"
+                            data-title="Fundamental Copywriting Mastery"
+                            data-issuer="Skillpedia">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Visual Content Creation via Canva Desktop"
+                 data-default-index="10">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/sertifikat-desain-canva-desktop-skillpedia.png"
+                         data-title="Visual Content Creation via Canva Desktop"
+                         data-issuer="Skillpedia">
+                        <img src="img/sertifikat-desain-canva-desktop-skillpedia.png" alt="Visual Content Creation via Canva Desktop" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Visual Content Creation via Canva Desktop</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Skillpedia                    </div>
+                    <p class="project-desc mb-4">Pembuatan aset visual interaktif, konsistensi warna, dan komposisi hierarki desain digital di Canva.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/sertifikat-desain-canva-desktop-skillpedia.png"
+                            data-title="Visual Content Creation via Canva Desktop"
+                            data-issuer="Skillpedia">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Search Engine Optimization (SEO) Website"
+                 data-default-index="11">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/sertifikat-seo-website.png"
+                         data-title="Search Engine Optimization (SEO) Website"
+                         data-issuer="Skillpedia">
+                        <img src="img/sertifikat-seo-website.png" alt="Search Engine Optimization (SEO) Website" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Search Engine Optimization (SEO) Website</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Skillpedia                    </div>
+                    <p class="project-desc mb-4">Optimasi struktur website on-page dan keyword research untuk menaikkan visibilitas mesin pencari.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/sertifikat-seo-website.png"
+                            data-title="Search Engine Optimization (SEO) Website"
+                            data-issuer="Skillpedia">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Web Development with WordPress"
+                 data-default-index="12">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/sertifikat-website-wordpress.png"
+                         data-title="Web Development with WordPress"
+                         data-issuer="Skillpedia">
+                        <img src="img/sertifikat-website-wordpress.png" alt="Web Development with WordPress" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Web Development with WordPress</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Skillpedia                    </div>
+                    <p class="project-desc mb-4">Pembangunan platform website fungsional berbasis CMS WordPress dengan pengaturan responsif.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/sertifikat-website-wordpress.png"
+                            data-title="Web Development with WordPress"
+                            data-issuer="Skillpedia">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Unleashing the Power of AI Agents"
+                 data-default-index="13">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate _ SkillsBuild - Unleashing the Power of AI Agents-1.png"
+                         data-title="Unleashing the Power of AI Agents"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate _ SkillsBuild - Unleashing the Power of AI Agents-1.png" alt="Unleashing the Power of AI Agents" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Unleashing the Power of AI Agents</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Eksplorasi perancangan AI Agent otonom untuk otomatisasi alur kerja dan pengambilan keputusan adaptif.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate _ SkillsBuild - Unleashing the Power of AI Agents-1.png"
+                            data-title="Unleashing the Power of AI Agents"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Data Science Landscape"
+                 data-default-index="14">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate _ SkillsBuild - Data Science Landscape-1.png"
+                         data-title="Data Science Landscape"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate _ SkillsBuild - Data Science Landscape-1.png" alt="Data Science Landscape" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Data Science Landscape</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Pemahaman mengenai ekosistem sains data, siklus analisis data modern, dan domain penerapannya.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate _ SkillsBuild - Data Science Landscape-1.png"
+                            data-title="Data Science Landscape"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Classifying Data Using IBM Granite"
+                 data-default-index="15">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate _ SkillsBuild - Classifying Data Using IBM-1.png"
+                         data-title="Classifying Data Using IBM Granite"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate _ SkillsBuild - Classifying Data Using IBM-1.png" alt="Classifying Data Using IBM Granite" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Classifying Data Using IBM Granite</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Penerapan model fondasi IBM Granite dalam melakukan klasifikasi dan pengorganisasian korpus data skala besar.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate _ SkillsBuild - Classifying Data Using IBM-1.png"
+                            data-title="Classifying Data Using IBM Granite"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Getting Started with Data"
+                 data-default-index="16">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Completion Certificate _ SkillsBuild - Getting Started With Data-1.png"
+                         data-title="Getting Started with Data"
+                         data-issuer="IBM SkillsBuild">
+                        <img src="img/Completion Certificate _ SkillsBuild - Getting Started With Data-1.png" alt="Getting Started with Data" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Getting Started with Data</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IBM SkillsBuild                    </div>
+                    <p class="project-desc mb-4">Fondasi literasi data terstruktur, teknik kurasi informasi mentah, pemanfaatan data dalam analitik digital.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Completion Certificate _ SkillsBuild - Getting Started With Data-1.png"
+                            data-title="Getting Started with Data"
+                            data-issuer="IBM SkillsBuild">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Fundamental of Assistant Web Developer - Nasional"
+                 data-default-index="17">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Sertifikat_RAFI ZHEVIRGI ALWAFA_Fundamental of Assistant Web Developer - Nasional-1.png"
+                         data-title="Fundamental of Assistant Web Developer - Nasional"
+                         data-issuer="Digital Talent Scholarship">
+                        <img src="img/Sertifikat_RAFI ZHEVIRGI ALWAFA_Fundamental of Assistant Web Developer - Nasional-1.png" alt="Fundamental of Assistant Web Developer - Nasional" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Fundamental of Assistant Web Developer - Nasional</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Digital Talent Scholarship                    </div>
+                    <p class="project-desc mb-4">Penguasaan fondasi perancangan web, struktur dokumen web, responsivitas antarmuka, dan dasar alur kerja web development.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Sertifikat_RAFI ZHEVIRGI ALWAFA_Fundamental of Assistant Web Developer - Nasional-1.png"
+                            data-title="Fundamental of Assistant Web Developer - Nasional"
+                            data-issuer="Digital Talent Scholarship">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Intermediate Assistant Web Developer - Nasional"
+                 data-default-index="18">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Sertifikat_RAFI ZHEVIRGI ALWAFA_Intermediate Assistant Web Developer - Nasional-1.png"
+                         data-title="Intermediate Assistant Web Developer - Nasional"
+                         data-issuer="Digital Talent Scholarship">
+                        <img src="img/Sertifikat_RAFI ZHEVIRGI ALWAFA_Intermediate Assistant Web Developer - Nasional-1.png" alt="Intermediate Assistant Web Developer - Nasional" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Intermediate Assistant Web Developer - Nasional</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Digital Talent Scholarship                    </div>
+                    <p class="project-desc mb-4">Tingkat lanjutan pengembangan antarmuka web, perancangan modul interaktif, dan integrasi komponen front-end modern.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Sertifikat_RAFI ZHEVIRGI ALWAFA_Intermediate Assistant Web Developer - Nasional-1.png"
+                            data-title="Intermediate Assistant Web Developer - Nasional"
+                            data-issuer="Digital Talent Scholarship">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Spec-Driven Development dengan Kiro"
+                 data-default-index="19">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/sertifikat_dicoding_spec-driven development with Kiro-1.jpg"
+                         data-title="Spec-Driven Development dengan Kiro"
+                         data-issuer="Dicoding Indonesia">
+                        <img src="img/sertifikat_dicoding_spec-driven development with Kiro-1.jpg" alt="Spec-Driven Development dengan Kiro" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Spec-Driven Development dengan Kiro</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Dicoding Indonesia                    </div>
+                    <p class="project-desc mb-4">Penerapan metodologi rekayasa berbasis spesifikasi perangkat lunak terstandarisasi dengan integrasi AI Kiro.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/sertifikat_dicoding_spec-driven development with Kiro-1.jpg"
+                            data-title="Spec-Driven Development dengan Kiro"
+                            data-issuer="Dicoding Indonesia">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="keahlian"
+                 data-year="2026"
+                 data-title="Belajar Dasar Cloud dan Gen AI di AWS"
+                 data-default-index="20">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/sertifikat_dicoding_belajar cloud dan gen ai AWS-1.jpg"
+                         data-title="Belajar Dasar Cloud dan Gen AI di AWS"
+                         data-issuer="Dicoding Indonesia">
+                        <img src="img/sertifikat_dicoding_belajar cloud dan gen ai AWS-1.jpg" alt="Belajar Dasar Cloud dan Gen AI di AWS" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Keahlian                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Belajar Dasar Cloud dan Gen AI di AWS</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Dicoding Indonesia                    </div>
+                    <p class="project-desc mb-4">Pengenalan Cloud Computing Amazon Web Services (AWS), konfigurasi infrastruktur cloud fundamental, dan model Generative AI.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/sertifikat_dicoding_belajar cloud dan gen ai AWS-1.jpg"
+                            data-title="Belajar Dasar Cloud dan Gen AI di AWS"
+                            data-issuer="Dicoding Indonesia">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kompetisi"
+                 data-year="2025"
+                 data-title="CNF Business Plan Competition Jogja 2025"
+                 data-default-index="21">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/cnf bp jogja.png"
+                         data-title="CNF Business Plan Competition Jogja 2025"
+                         data-issuer="CNF Jogja">
+                        <img src="img/cnf bp jogja.png" alt="CNF Business Plan Competition Jogja 2025" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kompetisi                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">CNF Business Plan Competition Jogja 2025</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        CNF Jogja                    </div>
+                    <p class="project-desc mb-4">Raih Medali Perak pada kompetisi business plan nasional fokus inovasi teknologi dan transformasi digital.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/cnf bp jogja.png"
+                            data-title="CNF Business Plan Competition Jogja 2025"
+                            data-issuer="CNF Jogja">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kompetisi"
+                 data-year="2025"
+                 data-title="IDEA Festival 4: Business Plan Competition (Favorite Poster)"
+                 data-default-index="22">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/IDF 4 BISNIS PLAN_FAVORITE POSTER.png"
+                         data-title="IDEA Festival 4: Business Plan Competition (Favorite Poster)"
+                         data-issuer="IDEA Festival 4">
+                        <img src="img/IDF 4 BISNIS PLAN_FAVORITE POSTER.png" alt="IDEA Festival 4: Business Plan Competition (Favorite Poster)" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kompetisi                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">IDEA Festival 4: Business Plan Competition (Favorite Poster)</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IDEA Festival 4                    </div>
+                    <p class="project-desc mb-4">Penghargaan Poster Favorit pada Business Plan Competition tingkat nasional dalam rangkaian acara IDEA Festival 4.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/IDF 4 BISNIS PLAN_FAVORITE POSTER.png"
+                            data-title="IDEA Festival 4: Business Plan Competition (Favorite Poster)"
+                            data-issuer="IDEA Festival 4">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kompetisi"
+                 data-year="2025"
+                 data-title="IDEA Festival 4: Business Plan Competition (Silver Medal)"
+                 data-default-index="23">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/IDF 4 BISNIS PLAN_SILVER MEDAL.png"
+                         data-title="IDEA Festival 4: Business Plan Competition (Silver Medal)"
+                         data-issuer="IDEA Festival 4">
+                        <img src="img/IDF 4 BISNIS PLAN_SILVER MEDAL.png" alt="IDEA Festival 4: Business Plan Competition (Silver Medal)" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kompetisi                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">IDEA Festival 4: Business Plan Competition (Silver Medal)</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IDEA Festival 4                    </div>
+                    <p class="project-desc mb-4">Raihan Medali Perak pada Business Plan Competition tingkat nasional dalam rangkaian acara IDEA Festival 4.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/IDF 4 BISNIS PLAN_SILVER MEDAL.png"
+                            data-title="IDEA Festival 4: Business Plan Competition (Silver Medal)"
+                            data-issuer="IDEA Festival 4">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kompetisi"
+                 data-year="2025"
+                 data-title="Soedirman Essay Competition 2025"
+                 data-default-index="24">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Sertifikat Peserta SEC_Rafi Zhevirgi Alwafa.png"
+                         data-title="Soedirman Essay Competition 2025"
+                         data-issuer="Universitas Jenderal Soedirman">
+                        <img src="img/Sertifikat Peserta SEC_Rafi Zhevirgi Alwafa.png" alt="Soedirman Essay Competition 2025" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kompetisi                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Soedirman Essay Competition 2025</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Universitas Jenderal Soedirman                    </div>
+                    <p class="project-desc mb-4">Sertifikat keikutsertaan sebagai peserta dalam ajang lomba menulis esai nasional Soedirman Essay Competition 2025.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Sertifikat Peserta SEC_Rafi Zhevirgi Alwafa.png"
+                            data-title="Soedirman Essay Competition 2025"
+                            data-issuer="Universitas Jenderal Soedirman">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="seminar"
+                 data-year="2024"
+                 data-title="Bakti BCA: Berbagi Ilmu"
+                 data-default-index="25">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/bakti bca.png"
+                         data-title="Bakti BCA: Berbagi Ilmu"
+                         data-issuer="PT Bank Central Asia Tbk">
+                        <img src="img/bakti bca.png" alt="Bakti BCA: Berbagi Ilmu" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Seminar &amp; Webinar                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2024                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Bakti BCA: Berbagi Ilmu</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        PT Bank Central Asia Tbk                    </div>
+                    <p class="project-desc mb-4">Sertifikat kepesertaan dalam program Bakti BCA: Berbagi Ilmu untuk peningkatan wawasan dan pengembangan kompetensi.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/bakti bca.png"
+                            data-title="Bakti BCA: Berbagi Ilmu"
+                            data-issuer="PT Bank Central Asia Tbk">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="seminar"
+                 data-year="2025"
+                 data-title="Seminar Nasional IDEA Festival 4 - Bali"
+                 data-default-index="26">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Sertifikat Seminar Nasional IDF 4_Bali_Rafi Zhevirgi Alwafa.png"
+                         data-title="Seminar Nasional IDEA Festival 4 - Bali"
+                         data-issuer="IDEA Festival 4">
+                        <img src="img/Sertifikat Seminar Nasional IDF 4_Bali_Rafi Zhevirgi Alwafa.png" alt="Seminar Nasional IDEA Festival 4 - Bali" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Seminar &amp; Webinar                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Seminar Nasional IDEA Festival 4 - Bali</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        IDEA Festival 4                    </div>
+                    <p class="project-desc mb-4">Sertifikat partisipasi dalam Seminar Nasional IDEA Festival 4 yang diselenggarakan secara nasional di Bali.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Sertifikat Seminar Nasional IDF 4_Bali_Rafi Zhevirgi Alwafa.png"
+                            data-title="Seminar Nasional IDEA Festival 4 - Bali"
+                            data-issuer="IDEA Festival 4">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="seminar"
+                 data-year="2024"
+                 data-title="Suarkan Asa &quot;EMPOWER: Empowering Futures with KIP-K: Mentorship and Inspiration for Success&quot;"
+                 data-default-index="27">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Suarkan ASA.jpg"
+                         data-title="Suarkan Asa &quot;EMPOWER: Empowering Futures with KIP-K: Mentorship and Inspiration for Success&quot;"
+                         data-issuer="Suarkan Asa">
+                        <img src="img/Suarkan ASA.jpg" alt="Suarkan Asa &quot;EMPOWER: Empowering Futures with KIP-K: Mentorship and Inspiration for Success&quot;" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Seminar &amp; Webinar                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2024                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Suarkan Asa &quot;EMPOWER: Empowering Futures with KIP-K: Mentorship and Inspiration for Success&quot;</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Suarkan Asa                    </div>
+                    <p class="project-desc mb-4">Sertifikat kepesertaan dalam program mentorship dan inspirasi kepemimpinan untuk pemberdayaan mahasiswa penerima KIP-K.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Suarkan ASA.jpg"
+                            data-title="Suarkan Asa &quot;EMPOWER: Empowering Futures with KIP-K: Mentorship and Inspiration for Success&quot;"
+                            data-issuer="Suarkan Asa">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="seminar"
+                 data-year="2026"
+                 data-title="METC Training: Empowering AI Foundations with Microsoft Fabric"
+                 data-default-index="28">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/metc-grand-campus-training-empowering-ai-foundations-with-microsoft-fabric-certificate-1.png"
+                         data-title="METC Training: Empowering AI Foundations with Microsoft Fabric"
+                         data-issuer="Dicoding Indonesia � Microsoft Elevate">
+                        <img src="img/metc-grand-campus-training-empowering-ai-foundations-with-microsoft-fabric-certificate-1.png" alt="METC Training: Empowering AI Foundations with Microsoft Fabric" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Seminar &amp; Webinar                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2026                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">METC Training: Empowering AI Foundations with Microsoft Fabric</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Dicoding Indonesia � Microsoft Elevate                    </div>
+                    <p class="project-desc mb-4">Pelatihan pemanfaatan arsitektur terintegrasi Microsoft Fabric sebagai landasan data analitik dan komputasi solusi AI.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/metc-grand-campus-training-empowering-ai-foundations-with-microsoft-fabric-certificate-1.png"
+                            data-title="METC Training: Empowering AI Foundations with Microsoft Fabric"
+                            data-issuer="Dicoding Indonesia � Microsoft Elevate">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kepanitiaan"
+                 data-year="2025"
+                 data-title="Panitia PKKMB Fakultas Ilmu Komputer"
+                 data-default-index="29">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/PANITIA_RAFI ZHEVIRGI ALWAFA_PKKMB-1.png"
+                         data-title="Panitia PKKMB Fakultas Ilmu Komputer"
+                         data-issuer="FILKOM Universitas Brawijaya">
+                        <img src="img/PANITIA_RAFI ZHEVIRGI ALWAFA_PKKMB-1.png" alt="Panitia PKKMB Fakultas Ilmu Komputer" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kepanitiaan                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Panitia PKKMB Fakultas Ilmu Komputer</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        FILKOM Universitas Brawijaya                    </div>
+                    <p class="project-desc mb-4">Menjadi fasilitator mahasiswa baru Cluster 25 di lingkungan Fakultas Ilmu Komputer UB.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/PANITIA_RAFI ZHEVIRGI ALWAFA_PKKMB-1.png"
+                            data-title="Panitia PKKMB Fakultas Ilmu Komputer"
+                            data-issuer="FILKOM Universitas Brawijaya">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kepanitiaan"
+                 data-year="2025"
+                 data-title="Panitia RAJA Brawijaya 2025"
+                 data-default-index="30">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/RAJA BRAWIJAYA 2025_RAFI ZHEVIRGI ALWAFA - 245150600111031 - Panitia RAJA Brawijaya 2025-1.png"
+                         data-title="Panitia RAJA Brawijaya 2025"
+                         data-issuer="Universitas Brawijaya">
+                        <img src="img/RAJA BRAWIJAYA 2025_RAFI ZHEVIRGI ALWAFA - 245150600111031 - Panitia RAJA Brawijaya 2025-1.png" alt="Panitia RAJA Brawijaya 2025" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kepanitiaan                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Panitia RAJA Brawijaya 2025</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Universitas Brawijaya                    </div>
+                    <p class="project-desc mb-4">Menjadi Supervisor pendamping mahasiswa baru Universitas Brawijaya pada rangkaian kegiatan RAJA Brawijaya 2025.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/RAJA BRAWIJAYA 2025_RAFI ZHEVIRGI ALWAFA - 245150600111031 - Panitia RAJA Brawijaya 2025-1.png"
+                            data-title="Panitia RAJA Brawijaya 2025"
+                            data-issuer="Universitas Brawijaya">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="kepanitiaan"
+                 data-year="2025"
+                 data-title="Fasilitator Startup Academy FILKOM UB"
+                 data-default-index="31">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/PANITIA_RAFI ZHEVIRGI ALWAFA_STARTUP ACADEMY-1.png"
+                         data-title="Fasilitator Startup Academy FILKOM UB"
+                         data-issuer="Startup Academy FILKOM UB">
+                        <img src="img/PANITIA_RAFI ZHEVIRGI ALWAFA_STARTUP ACADEMY-1.png" alt="Fasilitator Startup Academy FILKOM UB" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Kepanitiaan                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Fasilitator Startup Academy FILKOM UB</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Startup Academy FILKOM UB                    </div>
+                    <p class="project-desc mb-4">Menjadi Fasilitator mahasiswa baru Cluster 25 pada rangkaian kegiatan Startup Academy FILKOM UB.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/PANITIA_RAFI ZHEVIRGI ALWAFA_STARTUP ACADEMY-1.png"
+                            data-title="Fasilitator Startup Academy FILKOM UB"
+                            data-issuer="Startup Academy FILKOM UB">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="relawan"
+                 data-year="2025"
+                 data-title="Volunteer Peduly Malang"
+                 data-default-index="32">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Volunteer Peduly_Raffi Zhevirgi.jpg"
+                         data-title="Volunteer Peduly Malang"
+                         data-issuer="Peduly Malang">
+                        <img src="img/Volunteer Peduly_Raffi Zhevirgi.jpg" alt="Volunteer Peduly Malang" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Relawan                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Volunteer Peduly Malang</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Peduly Malang                    </div>
+                    <p class="project-desc mb-4">Sertifikat pengabdian dan kontribusi aktif sebagai relawan sosial kemanusiaan dalam berbagai aksi masyarakat bersama Peduly Malang.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Volunteer Peduly_Raffi Zhevirgi.jpg"
+                            data-title="Volunteer Peduly Malang"
+                            data-issuer="Peduly Malang">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                        <div class="cert-card scroll-reveal w-full h-full flex flex-col justify-between" 
+                 data-category="relawan"
+                 data-year="2025"
+                 data-title="Volunteer Mahasiswa Mengajar"
+                 data-default-index="33">
+                <div>
+                    <div class="project-img-wrapper cert-view-trigger cursor-pointer" 
+                         data-img="img/Volunteer WAJAR_Rafi Zhevirgi Alwafa.jpg"
+                         data-title="Volunteer Mahasiswa Mengajar"
+                         data-issuer="Mahasiswa Mengajar (WAJAR)">
+                        <img src="img/Volunteer WAJAR_Rafi Zhevirgi Alwafa.jpg" alt="Volunteer Mahasiswa Mengajar" class="project-img">
+                    </div>
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="cert-badge">
+                            <i class="fa-solid fa-ribbon"></i> Relawan                        </span>
+                        <span class="text-xs font-mono text-zinc-400 font-semibold">
+                            2025                        </span>
+                    </div>
+                    <h3 class="project-title text-lg mb-2">Volunteer Mahasiswa Mengajar</h3>
+                    <div class="cert-issuer">
+                        <i class="fa-solid fa-building-columns text-red-500"></i> 
+                        Mahasiswa Mengajar (WAJAR)                    </div>
+                    <p class="project-desc mb-4">Sertifikat pengabdian sebagai relawan pengajar dalam program Mahasiswa Mengajar (WAJAR) untuk penguatan pendidikan anak bangsa.</p>
+                </div>
+                <div class="pt-3 border-t border-white/5">
+                    <button class="btn-primary w-full cert-view-trigger text-sm py-2.5" 
+                            data-img="img/Volunteer WAJAR_Rafi Zhevirgi Alwafa.jpg"
+                            data-title="Volunteer Mahasiswa Mengajar"
+                            data-issuer="Mahasiswa Mengajar (WAJAR)">
+                        <span>Lihat Sertifikat</span>
+                        <i class="fa-solid fa-expand ml-1"></i>
+                    </button>
+                </div>
+            </div>
+                    </div>
+    </main>
+
+    <!-- Certificate Modal Lightbox -->
+    <div id="certificateModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md transition-opacity duration-300">
+        <div class="relative w-full max-w-4xl bg-zinc-950 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300 scale-95 opacity-0" id="certificateModalContent">
+            <!-- Close Button -->
+            <button id="modalCloseBtn" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-zinc-900/90 hover:bg-red-600 text-zinc-400 hover:text-white border border-zinc-700/60 flex items-center justify-center transition cursor-pointer shadow-lg" aria-label="Tutup">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 max-h-[85vh] overflow-y-auto">
+                <!-- Left/Top: High-Res Image Preview -->
+                <div class="lg:col-span-7 bg-black/95 p-4 sm:p-6 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-zinc-800/80">
+                    <img id="modalImg" src="" alt="Certificate Preview" class="w-full max-h-[60vh] object-contain rounded-xl shadow-2xl border border-white/5">
+                </div>
+
+                <!-- Right/Bottom: Certificate Details -->
+                <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between gap-2">
+                            <span id="modalCategory" class="cert-badge">
+                                <i class="fa-solid fa-ribbon"></i> <span>Keahlian</span>
+                            </span>
+                            <span id="modalDate" class="text-xs font-mono text-zinc-400 font-semibold bg-zinc-900 border border-zinc-800 px-2.5 py-1 rounded-md">
+                                2026
+                            </span>
+                        </div>
+
+                        <h3 id="modalTitle" class="text-xl sm:text-2xl font-black text-white font-heading leading-snug"></h3>
+                        
+                        <div class="flex items-center gap-2 text-sm text-zinc-300 font-medium">
+                            <i class="fa-solid fa-building-columns text-red-500"></i>
+                            <span id="modalIssuer"></span>
+                        </div>
+
+                        <div class="border-t border-zinc-800/80 pt-4">
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">Deskripsi & Kompetensi</h4>
+                            <p id="modalDesc" class="text-sm text-zinc-400 leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-zinc-800/80 flex items-center gap-3">
+                        <a id="modalFullImgBtn" href="#" target="_blank" class="btn-primary w-full text-center text-xs py-2.5 justify-center">
+                            <span>Buka Gambar Asli</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern Asymmetric Developer Footer -->
+    <footer class="modern-footer">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10">
+                
+                <!-- Column 1: Brand & Status -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <a href="index.html" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-red-600 text-white font-black text-sm tracking-wider shadow-lg shadow-red-950/40 hover:bg-red-500 transition">
+                            RAFFZ
+                        </a>
+                    </div>
+                    <p class="text-zinc-400 text-sm max-w-sm leading-relaxed">
+                        Software engineer & digital artisan focusing on frontend architecture, user experience design, and interactive interfaces.
+                    </p>
+                </div>
+
+                <!-- Column 2: Quick Navigation -->
+                <div class="md:col-span-3 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Navigation</span>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-zinc-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="journey.html" class="text-zinc-400 hover:text-white transition-colors">Journey</a></li>
+                        <li><a href="projects.html" class="text-zinc-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="certificate.html" class="text-zinc-400 hover:text-white transition-colors">Certificates</a></li>
+                        <li><a href="gallery.html" class="text-zinc-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="contact.html" class="text-zinc-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Connect & Social -->
+                <div class="md:col-span-4 space-y-3">
+                    <span class="text-xs font-mono uppercase tracking-wider text-zinc-500 block">Connect</span>
+                    <ul class="space-y-2 text-sm">
+                        <li>
+                            <a href="mailto:rafizhevirgialwafa@gmail.com" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-solid fa-envelope text-zinc-500"></i> rafizhevirgialwafa@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/rafi-zhevirgi" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-linkedin text-zinc-500"></i> linkedin.com/in/rafi-zhevirgi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/raffz1" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-github text-zinc-500"></i> github.com/raffz1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/raffz.zhevv" target="_blank" class="text-zinc-400 hover:text-white transition-colors inline-flex items-center gap-2">
+                                <i class="fa-brands fa-instagram text-zinc-500"></i> @raffz.zhevv
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-zinc-800/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
+                <p>&copy; 2026 Rafi Zhevirgi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=13.0"></script>
+    <script>
+        function openCertificateModal(data) {
+            const modal = document.getElementById('certificateModal');
+            const modalContent = document.getElementById('certificateModalContent');
+            if (!modal || !modalContent) return;
+
+            document.getElementById('modalImg').src = data.img || '';
+            document.getElementById('modalImg').alt = data.title || 'Preview';
+            document.getElementById('modalTitle').textContent = data.title || '';
+            document.getElementById('modalIssuer').textContent = data.issuer || '';
+            document.getElementById('modalDate').textContent = data.date || data.year || '';
+            document.getElementById('modalDesc').textContent = data.desc || 'Dokumentasi sertifikat dan pengakuan kompetensi resmi.';
+            
+            const catBadge = document.getElementById('modalCategory');
+            if (catBadge) {
+                catBadge.innerHTML = `<i class="fa-solid fa-ribbon"></i> <span>${data.category || 'Sertifikat'}</span>`;
+            }
+
+            const fullBtn = document.getElementById('modalFullImgBtn');
+            if (fullBtn) {
+                fullBtn.href = data.img || '#';
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+
+            requestAnimationFrame(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            });
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            const modalContent = document.getElementById('certificateModalContent');
+            if (!modal || !modalContent) return;
+
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 200);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Attach modal trigger to all certificate cards & inner triggers
+            document.querySelectorAll('.cert-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', (e) => {
+                    const imgEl = card.querySelector('.project-img-wrapper img');
+                    const badgeEl = card.querySelector('.cert-badge');
+                    const descEl = card.querySelector('.project-desc');
+                    const issuerEl = card.querySelector('.cert-issuer');
+                    const dateEl = card.querySelector('span.text-zinc-400.font-semibold') || card.querySelector('span.font-mono');
+
+                    const data = {
+                        title: card.getAttribute('data-title') || card.querySelector('.project-title')?.textContent?.trim() || '',
+                        issuer: card.querySelector('.project-img-wrapper')?.getAttribute('data-issuer') || issuerEl?.textContent?.trim() || '',
+                        year: card.getAttribute('data-year') || dateEl?.textContent?.trim() || '',
+                        date: dateEl?.textContent?.trim() || card.getAttribute('data-year') || '',
+                        img: card.querySelector('.project-img-wrapper')?.getAttribute('data-img') || imgEl?.getAttribute('src') || '',
+                        category: badgeEl?.textContent?.trim() || card.getAttribute('data-category') || 'Sertifikat',
+                        desc: descEl?.textContent?.trim() || ''
+                    };
+                    openCertificateModal(data);
+                });
+            });
+
+            // Modal close listeners
+            const modal = document.getElementById('certificateModal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeCertificateModal();
+                    }
+                });
+            }
+
+            const closeBtn = document.getElementById('modalCloseBtn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeCertificateModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeCertificateModal();
+                }
+            });
+
+            // Category filter logic
+            const filterBtns = document.querySelectorAll('.cert-filter-btn');
+            const certCards = document.querySelectorAll('.cert-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    certCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'flex';
+                            card.classList.remove('hidden');
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
