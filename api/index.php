@@ -1,30 +1,31 @@
 <?php
-$uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-$file = __DIR__ . '/..' . $uri;
+// Tampilkan error jika ada issue saat debug
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
 
-// 1. Jika request ke root (/), jalankan index.php utama
-if ($uri === '/' || $uri === '') {
-    require __DIR__ . '/../index.php';
+$rootPath = dirname(__DIR__);
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = trim($uri, '/');
+
+// 1. Root route -> index.php utama
+if (empty($uri)) {
+    require $rootPath . '/index.php';
     exit;
 }
 
-// 2. Jika request file statis (gambar, css, js, svg favicon), biarkan web server membacanya
-if ($uri !== '/' && file_exists($file) && !is_dir($file)) {
-    return false;
-}
-
-// 3. Jika request file php langsung (misal: /projects.php atau /contact.php)
-if (file_exists($file) && substr($file, -4) === '.php') {
-    require $file;
+// 2. Jika akses file php langsung (contoh: projects.php)
+$targetFile = $rootPath . '/' . $uri;
+if (is_file($targetFile) && pathinfo($targetFile, PATHINFO_EXTENSION) === 'php') {
+    require $targetFile;
     exit;
 }
 
-// 4. Jika request tanpa ekstensi .php (misal: /projects), arahkan ke filenya
-if (file_exists($file . '.php')) {
-    require $file . '.php';
+// 3. Jika akses tanpa ekstensi .php (contoh: /projects -> projects.php)
+if (is_file($targetFile . '.php')) {
+    require $targetFile . '.php';
     exit;
 }
 
-// Fallback jika tidak ditemukan
+// 4. Jika halaman tidak ditemukan
 http_response_code(404);
-echo "404 Not Found";
+echo "404 - Page Not Found";
