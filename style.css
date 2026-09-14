@@ -55,6 +55,9 @@ html {
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 body {
@@ -70,6 +73,9 @@ body {
     overflow-x: hidden;
     position: relative;
     line-height: 1.6;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 /* Ultra-thin Crimson Scrollbar */
@@ -103,11 +109,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
     font-weight: 700;
     letter-spacing: -0.02em;
+    cursor: default;
 }
 
 p {
     color: var(--text-secondary);
     font-size: 0.975rem;
+    cursor: default;
 }
 
 a {
@@ -126,6 +134,51 @@ img, svg, video {
     width: 100%;
     margin: 0 auto;
     padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   CURSOR & INTERACTION ERGONOMICS (ANTI I-BEAM SYSTEM)
+   ========================================================================== */
+/* Global default for headings, paragraphs, labels, badges, navigation, and structural wrappers */
+h1, h2, h3, h4, h5, h6, 
+p, span, div, section, article, main, header, footer, nav, ul, li, label, strong, b, em, i,
+.badge, .tag, .project-tag, .cert-badge, .timeline-date, .hero-greeting {
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Force pointer hand cursor on all links, buttons, and interactive card containers and all their descendants */
+a, a *, 
+button, button *, 
+[role="button"], [role="button"] *, 
+.cursor-pointer, .cursor-pointer *, 
+.project-card, .project-card *, 
+.cert-card, .cert-card *, 
+.gallery-view-trigger, .gallery-view-trigger *, 
+.cert-filter-btn, .cert-filter-btn *,
+.capsule-link, .capsule-link *, 
+.btn-primary, .btn-primary *, 
+.btn-secondary, .btn-secondary *, 
+.text-link, .text-link *, 
+.social-links a, .social-links a *,
+select {
+    cursor: pointer !important;
+}
+
+/* Preserve text-selection cursor only inside real form inputs & textareas */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea,
+[contenteditable="true"] {
+    cursor: text !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
 }
 
 /* ==========================================================================
@@ -364,16 +417,16 @@ img, svg, video {
     font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 1.5px;
-    color: #ef4444;
+    color: #fca5a5;
     text-transform: uppercase;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 0.85rem;
-    background: rgba(239, 68, 68, 0.08);
+    background: #180608;
     padding: 0.3rem 0.8rem;
     border-radius: 6px;
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    border: 1px solid #991b1b;
 }
 
 /* Solid Pure White Headline */
@@ -685,11 +738,11 @@ img, svg, video {
     font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: 700;
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.08);
+    color: #fca5a5;
+    background: #180608;
     padding: 0.2rem 0.65rem;
     border-radius: 6px;
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    border: 1px solid #991b1b;
     margin-bottom: 0.75rem;
 }
 
@@ -760,6 +813,7 @@ img, svg, video {
 }
 
 .project-card, .cert-card {
+    position: relative;
     background: rgba(18, 18, 24, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
@@ -769,15 +823,15 @@ img, svg, video {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: default;
+    cursor: pointer;
     user-select: none;
-    transition: transform 0.35s var(--transition-smooth), border-color 0.35s ease;
+    transition: transform 0.35s var(--transition-smooth), border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .project-card:hover, .cert-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(239, 68, 68, 0.4);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-color: rgba(220, 38, 38, 0.75);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(220, 38, 38, 0.15);
 }
 
 .project-img-wrapper {
@@ -799,7 +853,7 @@ img, svg, video {
 }
 
 .project-card:hover .project-img, .cert-card:hover .project-img {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 .project-tags {
@@ -814,10 +868,17 @@ img, svg, video {
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0.2rem 0.6rem;
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid rgba(239, 68, 68, 0.25);
+    background: #180608;
+    border: 1px solid #991b1b;
     border-radius: 6px;
-    color: #ef4444;
+    color: #fca5a5;
+    transition: all 0.25s ease;
+}
+
+.project-card:hover .project-tag {
+    border-color: #dc2626;
+    color: #ffffff;
+    background: #25080b;
 }
 
 .project-title {
@@ -826,6 +887,11 @@ img, svg, video {
     color: #ffffff;
     margin-bottom: 0.5rem;
     line-height: 1.35;
+    transition: color 0.25s ease;
+}
+
+.project-card:hover .project-title {
+    color: #ef4444;
 }
 
 .project-desc {
@@ -848,12 +914,19 @@ img, svg, video {
     transition: all 0.25s ease;
 }
 
-.project-link:hover {
+.project-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+}
+
+.project-card:hover .project-link {
     color: #ffffff;
 }
 
-.project-link:hover i {
-    transform: translateX(4px);
+.project-card:hover .project-link i {
+    transform: translateX(5px);
 }
 
 /* Certificate Badges & Filters */
@@ -862,9 +935,9 @@ img, svg, video {
     align-items: center;
     gap: 6px;
     padding: 0.25rem 0.65rem;
-    background: rgba(239, 68, 68, 0.08);
-    border: 1px solid rgba(239, 68, 68, 0.25);
-    color: #ef4444;
+    background: #180608;
+    border: 1px solid #991b1b;
+    color: #fca5a5;
     border-radius: 6px;
     font-size: 0.76rem;
     font-weight: 600;
@@ -912,10 +985,10 @@ img, svg, video {
 }
 
 .cert-filter-btn.active {
-    background: rgba(69, 10, 10, 0.85);
+    background: #450a0a;
     border-color: #dc2626;
     color: #ffffff;
-    box-shadow: 0 10px 25px -3px rgba(69, 10, 10, 0.5);
+    box-shadow: 0 10px 25px -3px rgba(69, 10, 10, 0.6);
 }
 
 /* ==========================================================================
@@ -1056,8 +1129,11 @@ img, svg, video {
    11. HUMAN-CRAFTED ASYMMETRIC DEVELOPER FOOTER
    ========================================================================== */
 .modern-footer {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: #07070a;
+    position: relative;
+    z-index: 20;
+    border-top: 1px solid #27272a;
+    background-color: #09090b !important;
+    background-image: none !important;
     padding-top: 3.5rem;
     padding-bottom: 2.5rem;
     margin-top: 5rem;

@@ -386,7 +386,7 @@
     </main>
 
     <!-- Modern Asymmetric Developer Footer -->
-    <footer class="modern-footer">
+    <footer class="modern-footer bg-zinc-950 border-t border-zinc-800 relative z-20">
         <div class="max-w-6xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10">
                 
@@ -534,13 +534,13 @@
                 ],
                 demo_url: 'https://nodfinc.vercel.app/'
             },
-            'Sinta': {
-                title: 'Sinta',
-                tags: ['Web Development', 'Gesture & Gamification'],
+            'sinta': {
+                title: 'SINTA: Sari Animasi Jantung',
+                tags: ['Web Development', 'HealthTech & AI'],
                 year: '2026',
                 roles: ['Full Stack Developer'],
-                technologies: ['JavaScript', 'HTML5', 'CSS3', 'MediaPipe Face Mesh', 'Gesture Recognition'],
-                desc: 'Sinta adalah platform simulasi literasi finansial interaktif yang memanfaatkan kecerdasan buatan berbasis computer vision untuk mendeteksi gestur kepala (mengangguk dan menggeleng) sebagai kontrol pengambilan keputusan. Melalui simulasi gamifikasi ini, pengguna diajak mengasah kebiasaan finansial yang bijak secara intuitif, menyenangkan, dan bebas sentuhan.',
+                technologies: ['JavaScript', 'HTML5', 'CSS3', 'AI Animation'],
+                desc: 'SINTA (Sari Animasi Jantung) adalah platform edukasi kesehatan berbasis AI yang menyajikan animasi proses fisiologis jantung secara interaktif untuk meningkatkan pemahaman awam tentang kesehatan kardiovaskular.',
                 images: [
                     'img/sinta_1.png',
                     'img/sinta_2.png',
@@ -580,17 +580,15 @@
                     'img/kritika edu_3.png',
                     'img/kritika edu_4.png',
                     'img/kritika edu_5.png',
-                    'img/kritika edu_6.png',
-                    'img/kritika edu_7.png',
-                    'img/kritika edu_8.png',
-                    'img/kritika edu_9.png'
+                    'img/kritika edu_6.png'
                 ],
                 demo_url: 'https://kritika-edu.vercel.app/'
             }
         };
 
         const urlParams = new URLSearchParams(window.location.search);
-        let currentId = urlParams.get('id') || 'tanibantu';
+        let rawId = urlParams.get('id') || 'tanibantu';
+        let currentId = rawId.toLowerCase();
         if (!projectsData[currentId]) {
             currentId = 'tanibantu';
         }
